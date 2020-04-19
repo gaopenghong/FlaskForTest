@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block body %}
+    <div class="tab-pane fade in active" id="config">
+        <div class="div-width">
+            <div class="form-horizontal">
+                <center><h2>指标配置</h2></center>
+                <table id="config_list_table"></table>
+            </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <link href="/static/css/lib/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/lib/bootstrap-editable.css" rel="stylesheet"/>
+    <link href="/static/css/lib/bootstrap-table.css" rel="stylesheet">
+    <script src="/static/js/lib/jquery.min.js"></script>
+    <script src="/static/js/lib/bootstrap-select.js"></script>
+    <script src="/static/js/lib/bootstrap.js"></script>
+    <script src="/static/js/lib/bootstrap-editable.js"></script>
+    <script src="/static/js/lib/bootstrap-table.js"></script>
+    <script src="/static/js/lib/bootstrap-table-zh-CN.js"></script>
+    <script src="/static/js/algorithm_config.js"></script>
+{% endblock %}
+

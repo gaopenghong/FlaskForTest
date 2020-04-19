@@ -1,0 +1,124 @@
+<meta charset="utf-8">
+{% extends "base.html" %}
+{% block body %}
+    <ul id="myTab" class="nav nav-tabs">
+        <li class="active">
+            <a href="#truck_trailer" data-toggle="tab">
+                新增挂箱
+            </a>
+        </li>
+        <li>
+            <a href="#fy_driver"   data-toggle="tab">
+                共建司机接单
+            </a>
+        </li>
+    </ul>
+  <!-- 每个tab页对应的内容 -->
+    <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade in active" id="truck_trailer">
+            <h4>联系人：韩程</h4>
+            <div class="div-width">
+                <center><h2>新增挂箱</h2></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+                        <div class="col-sm-6">
+                            <select id="env" class="selectpicker" title="请选择环境" style="width: 50px">
+                                <option value="r1" selected>r1</option>
+                                <option value="r2">r2</option>
+                                <option value="t1">t1</option>
+                                <option value="t2">t2</option>
+                                <option value="t3">t3</option>
+                                <option value="t4">t4</option>
+                                <option value="t5">t5</option>
+                                <option value="t6">t6</option>
+                                <option value="t7">t7</option>
+                                <option value="t8">t8</option>
+                                <option value="t9">t9</option>
+                                <option value="t10">t10</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">车牌号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="plate_number" placeholder="请输入正确车牌号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="TruckTrailerSubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                            <textarea class="form-control" rows="10" id="truck_trailer_result" style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="trailer_list_table">
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="fy_driver">
+            <h4>联系人：柳雄金</h4>
+            <div class="div-width">
+                <h2>共建司机接单</h2>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+                        <div class="col-sm-6">
+                            <select id="environment_fy_driver" class="selectpicker" title="请选择环境" style="width: 50px">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="order_sn" class="col-sm-2 control-label">运单号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="order_sn" placeholder="请输入运单号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="driver_mobile" class="col-sm-2 control-label">司机手机号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="driver_mobile" placeholder="请输入司机手机">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="order_status" class="col-sm-2 control-label">运单状态</label>
+
+                        <div class="col-sm-6">
+                            <select id="order_status" class="selectpicker" title="运单状态" style="width: 50px">
+                                <option value="待接单" selected>司机待接单</option>
+                                <option value="已接单">司机已接单</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="fyDriverAcceptSubmit">执行</button>
+                        </div>
+                    </div>
+                        <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                    <textarea class="form-control" rows="10" id="fy_driver_accept_result"
+                              style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="fy_driver_accept_table">
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   {% endblock %}
+
+{% block script %}
+    <script src="/static/js/truck_tools.js"></script>
+{% endblock %}

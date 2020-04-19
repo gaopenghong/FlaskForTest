@@ -1,0 +1,21 @@
+BeautifulSoup4
+flask
+flask_bootstrap
+flask_migrate
+flask_script
+flask_mail
+flask_moment
+Flask-OAuth
+lxml
+pymemcache
+PyMySQL
+python-jenkins
+redis
+requests
+SQLAlchemy
+sshtunnel
+# uwsgi
+pyyaml
+apscheduler
+xlutils
+pandas

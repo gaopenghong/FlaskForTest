@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{#{% block head %}#}
+{##}
+{#{% endblock %}#}
+{% block body %}
+    <div style="text-align: center"><h2>欢迎来到福佑质量保障部的平台</h2></div>
+    <div style="margin: 0 auto; width: 80%">
+        {#        <h2>清理memcache缓存</h2>#}
+        {#        <h3>本周值周生 <span id="onduty"></span>)</h3>#}
+        {#        <h6>(如果没有数据，点击下面表格刷新几次，抱歉了</h6>#}
+        {#        <table id="onduty_table">#}
+        {##}
+        {#        </table>#}
+        {#        <br>#}
+        {#        <h4>下周值周生 <span id="onduty"></span></h4>#}
+        {#        <h6>商户版qa就一个</h6>#}
+        {#        <table id="next_onduty_table">#}
+        {##}
+        {#        </table>#}
+    </div>
+    </div>
+    <script>
+        $(function () {
+            $.ajax({
+                type: 'get',
+                url: '/cookie',
+                dataType: 'json',
+                success: function (res) {
+                },
+            });
+        })
+    </script>
+{% endblock %}

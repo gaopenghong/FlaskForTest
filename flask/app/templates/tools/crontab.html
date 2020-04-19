@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% block body %}
+    <div class="tab-pane fade in active" id="crontab">
+        <div class="div-width">
+            <div class="form-horizontal">
+                <center><h2>企业微信定时任务</h2></center>
+                <p>&nbsp;</p>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-sm-2 control-label">
+                        <span style="font-family: verdana; color: indianred; ">*</span>
+                        任务名称</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="run_name" placeholder="请输入任务名称">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputName" class="col-sm-2 control-label">
+                        <span style="font-family: verdana; color: indianred; ">*</span>
+                        任务类型</label>
+
+                    <div class="col-sm-6">
+                        <select id="run_type" class="selectpicker" title="请选择任务类型" style="width: 50px">
+                            <option value="timer" selected>定时任务</option>
+                            <option value="cyclic">循环任务</option>
+                            <option value="onece">一次性任务</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="run_date_div" class='form-group' hidden="hidden">
+                    <label for="inputName" class="col-sm-2 control-label"> 任务日期</label>
+                    <div class="col-sm-9">
+                        <div class='input-group' id='run_date'>
+                            <input type="number" id="year" name="year" lay-verify="number" placeholder="年" autocomplete="off" class="layui-input" min="2019" max="2024">
+                            <input type="number" id="month" name="month" lay-verify="number" placeholder="月" autocomplete="off" class="layui-input" min="1" max="12">
+                            <input type="number" id="day" name="day" lay-verify="number" placeholder="日" autocomplete="off" class="layui-input" min="1" max="31">
+                        </div>
+                    </div>
+                </div>
+                <div id="week_div" class="form-group">
+                    <label for="inputName" class="col-sm-2 control-label">任务 Week</label>
+                    <div class="col-sm-4">
+                        <select id="start_week" class="selectpicker" title="请选择开始" style="width: 50px">
+                            <option value="0">mon</option>
+                            <option value="1">tue</option>
+                            <option value="2">wed</option>
+                            <option value="3">thu</option>
+                            <option value="4">fri</option>
+                            <option value="5">sat</option>
+                            <option value="6">sun</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-4">
+                        <select id="end_week" class="selectpicker" title="请选择结束" style="width: 50px">
+                            <option value="0">mon</option>
+                            <option value="1">tue</option>
+                            <option value="2">wed</option>
+                            <option value="3">thu</option>
+                            <option value="4">fri</option>
+                            <option value="5">sat</option
+                            <option value="6">sun</option>
+                        </select>
+                    </div>
+                </div>
+                <div class='form-group'>
+                    <label for="inputName" class="col-sm-2 control-label">
+                        <span style="font-family: verdana; color: indianred; ">*</span>
+                        任务时间</label>
+                    <div class="col-sm-9">
+                        <div class='input-group' id='run_time'>
+                            <input type="number" id="hour" name="hour" lay-verify="number" placeholder="时" autocomplete="off" class="layui-input" min="0" max="23">
+                            <input type="number" id="mint" name="mint" lay-verify="number" placeholder="分" autocomplete="off" class="layui-input" min="0" max="59">
+                            <input type="number" id="senc" name="senc" lay-verify="number" placeholder="秒" autocomplete="off" class="layui-input" min="0" max="59">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <span style="font-family: verdana; color: indianred; ">注：当任务类型为【循环任务】时，任务时间为间隔时长！</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-sm-2 control-label">
+                        <span style="font-family: verdana; color: indianred; ">*</span>
+                        消息内容</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="job_content" placeholder="请输入任务名称">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-sm-2 control-label">
+                        <span style="font-family: verdana; color: indianred; ">*</span>
+                        群机器人 Key</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="robot_key" placeholder="请输入任务名称">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-danger" id="crontabSubmit">添加待执行任务</button>
+                    </div>
+                </div>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <center><h3>定时任务列表</h3></center>
+                <div class="form-group">
+                    <table id="crontab_table">
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="/static/js/crontab_tools.js"></script>
+{% endblock %}

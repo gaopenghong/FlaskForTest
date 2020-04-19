@@ -1,0 +1,1302 @@
+{% extends "base.html" %}
+{% block body %}
+    <ul id="myTab" class="nav nav-tabs" xmlns="http://www.w3.org/1999/html">
+        {#        <li class="active">#}
+        {#        </li>#}
+        <li class="active">
+            <a href="#order_guobaohui_2" data-toggle="tab">
+                运单数据生成
+            </a>
+        </li>
+        <li>
+            <a href="#order_zhangjian_10" data-toggle="tab">
+                运单指定操作
+            </a>
+        </li>
+        <li>
+            <a href="#order_1" data-toggle="tab">
+                异常修改(运单状态)
+            </a>
+        </li>
+        <li>
+            <a href="#order_2" data-toggle="tab">
+                司机所有运单卸货完成
+            </a>
+        </li>
+        <li>
+            <a href="#order_sunzhuye_1" data-toggle="tab">
+                运单产生轨迹时效扣款
+            </a>
+        </li>
+        <li>
+            <a href="#order_sunzhuye_2" data-toggle="tab">
+                修改运单装卸货地址
+            </a>
+        </li>
+        <li>
+            <a href="#order_guobaohui_1" data-toggle="tab">
+                智能调度派车开关
+            </a>
+        </li>
+        <li>
+            <a href="#order_zhangjian_9" data-toggle="tab">
+                生成意向单
+            </a>
+        </li>
+
+        <li class="dropdown">
+            <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown">
+                三方运单
+                <b class="caret">
+                </b>
+            </a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
+
+                <li>
+                    <a href="#order_zhangjian_1" tabindex="-1" data-toggle="tab">
+                        德邦询价单
+                    </a>
+                </li>
+                <li>
+                    <a href="#order_zhangjian_2" tabindex="-1" data-toggle="tab">
+                        京东询价单
+                    </a>
+                </li>
+                <li>
+                    <a href="#order_zhangjian_3" tabindex="-1" data-toggle="tab">
+                        跨越询价单
+                    </a>
+                </li>
+                <li>
+                    <a href="#order_zhangjian_4" tabindex="-1" data-toggle="tab">
+                        顺丰询价单
+                    </a>
+                </li>
+                <li>
+                    <a href="#order_zhangjian_5" tabindex="-1" data-toggle="tab">
+                        圆通询价单
+                    </a>
+                </li>
+                <li>
+                    <a href="#order_zhangjian_6" tabindex="-1" data-toggle="tab">
+                        华宇嘟嘟询价单
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <!-- 每个tab页对应的内容 -->
+    <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade" id="order_zhangjian_1">
+            <h4>联系人：张健</h4>
+            <div class="div-width">
+                {#       <div class="tab-pane" id="settings">#}
+                <center><h2>德邦询价单</h2></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+                        <div class="col-sm-6">
+                            <select id="environment" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">产品类型</label>
+                        <div class="col-sm-6">
+                            <select id="producttype" class="selectpicker" title="请选择产品类型" style="width: 50px">
+                                <option value="5" selected>整车</option>
+                                <option value="4">干线</option>
+                                <option value="6">整车配送</option>
+                                <option value="7">货主</option>
+                                <option value="8">短途</option>
+                                <option value="9">精准专车</option>
+                                <option value="10">干线-合同车</option>
+                                <option value="11">干线-集采</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">车长</label>
+                        <div class="col-sm-6">
+                            <select id="carlength" class="selectpicker" title="请选择车长" style="width: 50px">
+                                <option value="4.2" selected>4.2</option>
+                                <option value="5.2">5.2</option>
+                                <option value="6.5">6.5</option>
+                                <option value="6.8">6.8</option>
+                                <option value="7.6">7.6</option>
+                                <option value="9.6">9.6</option>
+                                <option value="10">10</option>
+                                <option value="12.5">12.5</option>
+                                <option value="13">13</option>
+                                <option value="13.5">13.5</option>
+                                <option value="15">15</option>
+                                <option value="16.5">16.5</option>
+                                <option value="17.5">17.5</option>
+                                <option value="21">21</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">车型</label>
+                        <div class="col-sm-6">
+                            <select id="cartype" class="selectpicker" title="请选择车型" style="width: 50px">
+                                <option value="XS" selected>箱式车</option>
+                                <option value="GL">高栏车</option>
+                                <option value="PB">平板车</option>
+                                <option value="JZX">集装箱</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">始发地</label>
+                        <div class="col-sm-6">
+                            <select id="beginregion" class="selectpicker" title="请选择始发地" style="width: 50px">
+                                <option value="110000-1|110114" selected>北京-北京-昌平区</option>
+                                <option value="110000-1|110105">北京-北京-朝阳区</option>
+                                <option value="110000-1|110108">北京-北京-海淀区</option>
+                                <option value="441900|441907">广东-东莞-莞城街道</option>
+                                <option value="510100|510122">四川-成都-双流区</option>
+                                <option value="320100|320105">江苏-南京-建邺区</option>
+                                <option value="340100|340181">安徽-合肥-巢湖市</option>
+                                <option value="330100|330106">浙江-杭州-西湖区</option>
+                                <option value="220100|220102">吉林-长春-南关区</option>
+                                <option value="210100|210112">辽宁-沈阳-浑南区</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">目的地</label>
+                        <div class="col-sm-6">
+                            <select id="endregion" class="selectpicker" title="请选择目的地" style="width: 50px">
+                                <option value="110000-1|110108" selected>北京-北京-海淀区</option>
+                                <option value="110000-1|110114">北京-北京-昌平区</option>
+                                <option value="110000-1|110105">北京-北京-朝阳区</option>
+                                <option value="441900|441907">广东-东莞-莞城街道</option>
+                                <option value="320100|320105">江苏-南京-建邺区</option>
+                                <option value="510100|510122">四川-成都-双流区</option>
+                                <option value="340100|340181">安徽-合肥-巢湖市</option>
+                                <option value="330100|330106">浙江-杭州-西湖区</option>
+                                <option value="220100|220102">吉林-长春-南关区</option>
+                                <option value="210100|210112">辽宁-沈阳-浑南区</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">裸车价</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" id="price" placeholder="指派货裸车价，(必填)">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="debangOrderSubmit">开始询价</button>
+                            <div class="radio-inline">
+                                <input type="radio" id="dotype1" value="1" checked/>
+                                <label for="dotype1">是</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">准备中标德邦单号</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="orderCode" placeholder="请输入德邦单号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">德邦单号订单状态</label>
+                        <div class="col-sm-6">
+                            <select id="orderStauts" class="selectpicker" title="请选择订单状态" style="width: 50px">
+                                <option value="1" selected>确认中标</option>
+                                <option value="0">订单关闭</option>
+                                <option value="2">已打印运输合同</option>
+                                <option value="3">确认发车</option>
+                                <option value="4">确认到达</option>
+                                <option value="5">已开单</option>
+                                <option value="6">竞标失败</option>
+                                <option value="7">已签收</option>
+                                <option value="8">干线订单传车次号</option>
+                            </select>
+                        </div>
+                    </div>
+                    <span><i aria-label="图标: info-circle" class="anticon anticon-info-circle index__infoIcon--1fdUT"><svg
+                            viewBox="64 64 896 896" class="" data-icon="info-circle" width="1em" height="1em"
+                            fill="currentColor" aria-hidden="true" focusable="false"><path
+                            d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path><path
+                            d="M464 336a48 48 0 1 0 96 0 48 48 0 1 0-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"></path></svg></i>
+                询价成功整车德邦单子，请自行在福佑系统初审，报价，再进行中标等操作；
+                询价成功干线德邦单子，可以直接操作开始确认中标;
+                如果环境初始化后，请手动重启fykc_rainbow_bridge，fykc_thirdwrapper_service才能询价
+         </span>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="debangconfimSubmit">开始确认中标</button>
+                            <div class="radio-inline">
+                                <input type="radio" id="dotype2" value="2" checked/>
+                                <label for="dotype2">是</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">运单是否中标</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="debangConfimShow" placeholder="运单是否中标">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="debangcheckingSubmit">德邦发起对账</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">运单是否对账</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="debangCheckingShow" placeholder="运单是否对账">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="debang_order_list_table">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="order_zhangjian_2">
+            <h4>联系人：张健</h4>
+            <div class="div-width">
+                {#       <div class="tab-pane" id="settings">#}
+                <center><h2>京东询价单</h2></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+                        <div class="col-sm-6">
+                            <select id="environment_jd" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">车长/车型</label>
+                        <div class="col-sm-6">
+                            <select id="carlengthtype" class="selectpicker" title="请选择车长/车型" style="width: 50px">
+                                <option value="4" selected>4.2米厢式货车</option>
+                                <option value="5">5.2米厢式货车</option>
+                                <option value="6">5.6米厢式货车</option>
+                                <option value="7">6.5米厢式货车</option>
+                                <option value="8">7.2米厢式货车</option>
+                                <option value="9">7.6米厢式货车</option>
+                                <option value="10">9.6米厢式货车</option>
+                                <option value="11">12.5米重型集装箱半挂车</option>
+                                <option value="12">14.5米重型集装箱半挂车</option>
+                                <option value="13">16.5米重型集装箱半挂车</option>
+                                <option value="14">4.2米冷藏厢式车</option>
+                                <option value="15">5.2米冷藏厢式车</option>
+                                <option value="16">7.6米冷藏厢式车</option>
+                                <option value="17">9.6米冷藏厢式车</option>
+                                <option value="18">13.7米冷藏半挂车</option>
+                                <option value="19">15米冷藏半挂车</option>
+                                <option value="20">6.2米厢式货车</option>
+                                <option value="21">5米重型集装箱半挂车</option>
+                                <option value="22">6.8米厢式货车</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">始发地</label>
+                        <div class="col-sm-6">
+                            <select id="jdbeginregion" class="selectpicker" title="请选择始发地" style="width: 50px">
+                                <option value="bengin1" selected>山东省-济南市-历城区</option>
+                                <option value="bengin2">北京市-北京市-海淀区</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">目的地</label>
+                        <div class="col-sm-6">
+                            <select id="jdendregion" class="selectpicker" title="请选择目的地" style="width: 50px">
+                                <option value="end1" selected>北京市-北京市-海淀区</option>
+                                <option value="end2">山东省-济南市-历城区</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="jdOrderSubmit">开始询价</button>
+                            <div class="radio-inline">
+                                <input type="radio" id="dotype1" value="1" checked/>
+                                <label for="dotype1">是</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">准备中标京东单号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="jdorderCode" placeholder="请输入京东单号">
+                        </div>
+                    </div>
+                    <span><i aria-label="图标: info-circle" class="anticon anticon-info-circle index__infoIcon--1fdUT"><svg
+                            viewBox="64 64 896 896" class="" data-icon="info-circle" width="1em" height="1em"
+                            fill="currentColor" aria-hidden="true" focusable="false"><path
+                            d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path><path
+                            d="M464 336a48 48 0 1 0 96 0 48 48 0 1 0-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"></path></svg></i>
+                询价成功京东单子，请自行在福佑系统初审，报价，再进行中标等操作；
+                如果环境初始化后，请手动重启fykc_rainbow_bridge，fykc_thirdwrapper_service才能询价
+         </span>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="jdconfimSubmit">开始确认中标</button>
+                            <div class="radio-inline">
+                                <input type="radio" id="dotype2" value="2" checked/>
+                                <label for="dotype2">是</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">运单是否中标</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="jdConfimShow" placeholder="运单是否中标">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="jd_order_list_table">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="order_zhangjian_3">
+            <h4>联系人：张健</h4>
+            <div class="div-width">
+                {#       <div class="tab-pane" id="settings">#}
+                <center><h2>跨越询价单</h2></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+                        <div class="col-sm-6">
+                            <select id="environment_ky" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">车长/车型</label>
+                        <div class="col-sm-6">
+                            <select id="kycar" class="selectpicker" title="请选择车长/车型" style="width: 50px">
+                                <option value="5" selected>4.2米厢式货车</option>
+                                <option value="6">6.8米厢式货车</option>
+                                <option value="7">7.6米厢式货车</option>
+                                <option value="8">9.6米厢式货车</option>
+                                <option value="9">12.5米厢式货车</option>
+                                <option value="10">17.5米厢式货车</option>
+                                <option value="2">13.5米厢式货车</option>
+                                <option value="14">5.6米厢式货车</option>
+                                <option value="16">13.5米平板车</option>
+                                <option value="22">17.5米平板车</option>
+                                <option value="23">9.6米平板车</option>
+                                <option value="24">6.8米平板车</option>
+                                <option value="25">4.2米平板车</option>
+                                <option value="26">17.5米高栏车</option>
+                                <option value="27">13.5米高栏车</option>
+                                <option value="30">7.6米高栏车</option>
+                                <option value="33">4.2米高栏车</option>
+                                <option value="12">6.8米高栏车</option>
+                                <option value="11">9.6米高栏车</option>
+                                <option value="55">12.5米高栏车</option>
+                                <option value="34">15.4米冷藏车</option>
+                                <option value="36">9.6米冷藏车</option>
+                                <option value="40">4.2米冷藏车</option>
+                                <option value="56">15米冷藏车</option>
+                                <option value="43">17.5米高低板车</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">始发地</label>
+                        <div class="col-sm-6">
+                            <select id="kybeginregion" class="selectpicker" title="请选择始发地" style="width: 50px">
+                                <option value="bengin1" selected>河北-石家庄-长安区</option>
+                                <option value="bengin2">湖北-武汉-江汉区</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">目的地</label>
+                        <div class="col-sm-6">
+                            <select id="kyendregion" class="selectpicker" title="请选择目的地" style="width: 50px">
+                                <option value="end1" selected>湖北-武汉-江汉区</option>
+                                <option value="end2">河北-石家庄-长安区</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="kyOrderSubmit">开始询价</button>
+                            <div class="radio-inline">
+                                <input type="radio" id="dotype1" value="1" checked/>
+                                <label for="dotype1">是</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">准备中标跨越单号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="kyorderCode" placeholder="请输入跨越单号">
+                        </div>
+                    </div>
+                    <span><i aria-label="图标: info-circle" class="anticon anticon-info-circle index__infoIcon--1fdUT"><svg
+                            viewBox="64 64 896 896" class="" data-icon="info-circle" width="1em" height="1em"
+                            fill="currentColor" aria-hidden="true" focusable="false"><path
+                            d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path><path
+                            d="M464 336a48 48 0 1 0 96 0 48 48 0 1 0-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"></path></svg></i>
+                询价成功跨越单子，请自行在福佑系统初审，报价，再进行中标等操作；
+                如果环境初始化后，请手动重启fykc_rainbow_bridge，fykc_thirdwrapper_service才能询价
+         </span>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="kyconfimSubmit">开始确认中标</button>
+                            <div class="radio-inline">
+                                <input type="radio" id="dotype2" value="2" checked/>
+                                <label for="dotype2">是</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">运单是否中标</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="kyConfimShow" placeholder="运单是否中标">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="ky_order_list_table">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="order_zhangjian_4">
+            <h4>联系人：张健</h4>
+            <div class="div-width">
+                {#       <div class="tab-pane" id="settings">#}
+                <center><h2>顺丰询价单</h2></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+                        <div class="col-sm-6">
+                            <select id="environment_sf" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">车长</label>
+                        <div class="col-sm-6">
+                            <select id="vehicleton" class="selectpicker" title="请选择车长" style="width: 50px">
+                                <option value="1" selected>4.2</option>
+                                <option value="1.5">4.2</option>
+                                <option value="3">6.8</option>
+                                <option value="5">6.8</option>
+                                <option value="7">7.6</option>
+                                <option value="14">9.6</option>
+                                <option value="20">13</option>
+                                <option value="30">17.5</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">车型</label>
+                        <div class="col-sm-6">
+                            <select id="vehicletypecode" class="selectpicker" title="请选择车型" style="width: 50px">
+                                <option value="冷藏车-单温" selected>冷藏车-单温</option>
+                                <option value="冷藏车-双温">冷藏车-双温</option>
+                                <option value="药品冷藏运输车">药品冷藏运输车</option>
+                                <option value="冷藏车">冷藏车</option>
+                                <option value="厢式运输车">厢式运输车</option>
+                                <option value="厢式半挂车">厢式半挂车</option>
+                                <option value="半挂运输车">半挂运输车</option>
+                                <option value="平板运输车">平板运输车</option>
+                                <option value="半挂平板车">半挂平板车</option>
+                                <option value="仓栅运输车">仓栅运输车</option>
+                                <option value="高栏运输车">高栏运输车</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">始发地</label>
+                        <div class="col-sm-6">
+                            <select id="sfbeginregion" class="selectpicker" title="请选择始发地" style="width: 50px">
+                                <option value="bengin1" selected>山西省-太原市-杏花岭区</option>
+                                <option value="bengin2">北京市-北京市-海淀区</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">经停点</label>
+                        <div class="col-sm-6">
+                            <select id="sfcrossregion" class="selectpicker" title="请选择经停点" style="width: 50px">
+                                <option value="null" selected>不传经停点</option>
+                                <option value="cross1">广东省-深圳市-龙岗区</option>
+                                <option value="cross2">江苏省-南京市-玄武区</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">目的地</label>
+                        <div class="col-sm-6">
+                            <select id="sfendregion" class="selectpicker" title="请选择目的地" style="width: 50px">
+                                <option value="end1" selected>北京市-北京市-海淀区</option>
+                                <option value="end2">山西省-太原市-杏花岭区</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="sfOrderSubmit">开始询价</button>
+                            <div class="radio-inline">
+                                <input type="radio" id="dotype1" value="1" checked/>
+                                <label for="dotype1">是</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">准备中标顺丰单号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="sforderCode" placeholder="请输入顺丰单号">
+                        </div>
+                    </div>
+                    <span><i aria-label="图标: info-circle" class="anticon anticon-info-circle index__infoIcon--1fdUT"><svg
+                            viewBox="64 64 896 896" class="" data-icon="info-circle" width="1em" height="1em"
+                            fill="currentColor" aria-hidden="true" focusable="false"><path
+                            d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path><path
+                            d="M464 336a48 48 0 1 0 96 0 48 48 0 1 0-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"></path></svg></i>
+                询价成功顺丰单子，请自行在福佑系统初审，报价，再进行中标等操作；
+                如果环境初始化后，请手动重启fykc_rainbow_bridge，fykc_thirdwrapper_service才能询价
+         </span>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="sfconfimSubmit">开始确认中标</button>
+                            <div class="radio-inline">
+                                <input type="radio" id="dotype2" value="2" checked/>
+                                <label for="dotype2">是</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">运单是否中标</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="sfConfimShow" placeholder="运单是否中标">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="sf_order_list_table">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="order_zhangjian_5">
+            <h4>联系人：张健</h4>
+            <div class="div-width">
+                {#       <div class="tab-pane" id="settings">#}
+                <center><h2>圆通询价单</h2></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+                        <div class="col-sm-6">
+                            <select id="environment_yt" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">车长/车型</label>
+                        <div class="col-sm-6">
+                            <select id="ytcar" class="selectpicker" title="请选择车长/车型" style="width: 50px">
+                                <option value="7" selected>4.2米高栏车</option>
+                                <option value="8">4.2米箱式车</option>
+                                <option value="9">4.2米冷藏车</option>
+                                <option value="10">4.2米平板车</option>
+                                <option value="8">7.2米厢式货车</option>
+                                <option value="9">7.6米厢式货车</option>
+                                <option value="10">9.6米厢式货车</option>
+                                <option value="11">12.5米重型集装箱半挂车</option>
+                                <option value="12">14.5米重型集装箱半挂车</option>
+                                <option value="13">16.5米重型集装箱半挂车</option>
+                                <option value="14">4.2米冷藏厢式车</option>
+                                <option value="15">5.2米冷藏厢式车</option>
+                                <option value="16">7.6米冷藏厢式车</option>
+                                <option value="17">9.6米冷藏厢式车</option>
+                                <option value="18">13.7米冷藏半挂车</option>
+                                <option value="19">15米冷藏半挂车</option>
+                                <option value="20">6.2米厢式货车</option>
+                                <option value="21">5米重型集装箱半挂车</option>
+                                <option value="22">6.8米厢式货车</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">始发地</label>
+                        <div class="col-sm-6">
+                            <select id="ytbeginregion" class="selectpicker" title="请选择始发地" style="width: 50px">
+                                <option value="bengin1" selected>北京市-北京-海淀区</option>
+                                <option value="bengin2">上海市-上海-青浦区</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">目的地</label>
+                        <div class="col-sm-6">
+                            <select id="ytendregion" class="selectpicker" title="请选择目的地" style="width: 50px">
+                                <option value="end1" selected>上海市-上海-青浦区</option>
+                                <option value="end2">北京市-北京-海淀区</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="ytOrderSubmit">开始询价</button>
+                            <div class="radio-inline">
+                                <input type="radio" id="dotype1" value="1" checked/>
+                                <label for="dotype1">是</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">准备中标圆通单号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="ytorderCode" placeholder="请输入圆通单号">
+                        </div>
+                    </div>
+                    <span><i aria-label="图标: info-circle" class="anticon anticon-info-circle index__infoIcon--1fdUT"><svg
+                            viewBox="64 64 896 896" class="" data-icon="info-circle" width="1em" height="1em"
+                            fill="currentColor" aria-hidden="true" focusable="false"><path
+                            d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path><path
+                            d="M464 336a48 48 0 1 0 96 0 48 48 0 1 0-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"></path></svg></i>
+                询价成功圆通单子，请自行在福佑系统初审，报价，再进行中标等操作；
+                如果环境初始化后，请手动重启fykc_rainbow_bridge，fykc_thirdwrapper_service才能询价
+         </span>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="ytconfimSubmit">开始确认中标</button>
+                            <div class="radio-inline">
+                                <input type="radio" id="dotype2" value="2" checked/>
+                                <label for="dotype2">是</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">运单是否中标</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="ytConfimShow" placeholder="运单是否中标">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="yt_order_list_table">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="order_zhangjian_6">
+            <h4>联系人：张健</h4>
+            <div class="div-width">
+                {#       <div class="tab-pane" id="settings">#}
+                <center><h2>华宇嘟嘟询价单</h2></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+                        <div class="col-sm-6">
+                            <select id="environment_hydd" class="selectpicker" title="请选择环境"
+                                    style="width: 50px"></select>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">车长/车型</label>
+                        <div class="col-sm-6">
+                            <select id="hyddcar" class="selectpicker" title="请选择车长/车型" style="width: 50px">
+                                <option value="7" selected>4.2米高栏车</option>
+                                <option value="8">4.2米箱式车</option>
+                                <option value="9">4.2米冷藏车</option>
+                                <option value="10">4.2米平板车</option>
+                                <option value="8">7.2米厢式货车</option>
+                                <option value="9">7.6米厢式货车</option>
+                                <option value="10">9.6米厢式货车</option>
+                                <option value="11">12.5米重型集装箱半挂车</option>
+                                <option value="12">14.5米重型集装箱半挂车</option>
+                                <option value="13">16.5米重型集装箱半挂车</option>
+                                <option value="14">4.2米冷藏厢式车</option>
+                                <option value="15">5.2米冷藏厢式车</option>
+                                <option value="16">7.6米冷藏厢式车</option>
+                                <option value="17">9.6米冷藏厢式车</option>
+                                <option value="18">13.7米冷藏半挂车</option>
+                                <option value="19">15米冷藏半挂车</option>
+                                <option value="20">6.2米厢式货车</option>
+                                <option value="21">5米重型集装箱半挂车</option>
+                                <option value="22">6.8米厢式货车</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">始发地</label>
+                        <div class="col-sm-6">
+                            <select id="hyddbeginregion" class="selectpicker" title="请选择始发地" style="width: 50px">
+                                <option value="bengin1" selected>北京市-北京-海淀区</option>
+                                <option value="bengin2">上海市-上海-青浦区</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">目的地</label>
+                        <div class="col-sm-6">
+                            <select id="hyddendregion" class="selectpicker" title="请选择目的地" style="width: 50px">
+                                <option value="end1" selected>上海市-上海-青浦区</option>
+                                <option value="end2">北京市-北京-海淀区</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="hyddOrderSubmit">开始询价</button>
+                            <div class="radio-inline">
+                                <input type="radio" id="dotype1" value="1" checked/>
+                                <label for="dotype1">是</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">准备中标华宇嘟嘟单号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="hyddorderCode" placeholder="请输入华宇嘟嘟单号">
+                        </div>
+                    </div>
+                    <span><i aria-label="图标: info-circle" class="anticon anticon-info-circle index__infoIcon--1fdUT"><svg
+                            viewBox="64 64 896 896" class="" data-icon="info-circle" width="1em" height="1em"
+                            fill="currentColor" aria-hidden="true" focusable="false"><path
+                            d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path><path
+                            d="M464 336a48 48 0 1 0 96 0 48 48 0 1 0-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"></path></svg></i>
+                询价成功华宇嘟嘟单子，请自行在福佑系统初审，报价，再进行中标等操作；
+                如果环境初始化后，请手动重启fykc_rainbow_bridge，fykc_thirdwrapper_service才能询价
+         </span>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="hyddconfimSubmit">开始确认中标</button>
+                            <div class="radio-inline">
+                                <input type="radio" id="dotype2" value="2" checked/>
+                                <label for="dotype2">是</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">运单是否中标</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="hyddConfimShow" placeholder="运单是否中标">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="hydd_order_list_table">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="order_1">
+            <h4>联系人：王雪芹</h4>
+            <div class="div-width">
+                <h2>异常修改(运单状态)</h2>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+                        <div class="col-sm-6">
+                            <select id="env" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="orderSn" class="col-sm-2 control-label">运单号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="orderSn" placeholder="请输入运单号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">运单状态</label>
+
+                        <div class="col-sm-6">
+                            <select id="orderStatusModify" class="selectpicker" title="运单状态" style="width: 50px">
+                                <option value="12" selected>司机卸货完成</option>
+                                <option value="13">签收</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">修改原因</label>
+
+                        <div class="col-sm-6">
+                            <select id="modifyReason" class="selectpicker" title="修改原因" style="width: 50px">
+                                <option value="104" selected>司机未安装好运</option>
+                                <option value="105">司机忘记操作好运</option>
+                                <option value="106">初审修改地址错误</option>
+                                <option value="107">无法联系货主</option>
+                                <option value="108">货主拒绝签收</option>
+                                <option value="109">修改客户大区</option>
+                                <option value="110">修改货物重量体积</option>
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="orderAbnormalModifySubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="orderAbnormalModifyShow" placeholder="结果在这里展示">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="order_abnormal_modify_list_table">
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="order_2">
+            <h4>联系人：孙竹叶</h4>
+            <div class="div-width">
+                <h2>司机所有运单(待发车、确认发车)卸货完成</h2>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+
+                        <div class="col-sm-6">
+                            <select id="environment1" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">司机手机号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="driver_mobile" placeholder="请输入司机手机号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="ordersDoneSubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="orderesDoneShow" placeholder="结果在这里展示">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="done_order_list_table">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="order_sunzhuye_1">
+            <h4>联系人：孙竹叶</h4>
+            <div class="div-width">
+                <h2>运单产生时效轨迹扣款，请准备一个安排完司机的运单号，支持好运、车队、共建</h2>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+
+                        <div class="col-sm-6">
+                            <select id="environment2" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">运单号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="order_sn" placeholder="请输入运单号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">扣款类型</label>
+                        <div class="col-sm-6">
+                            <label><input type="radio" name="pay_type" value="both" checked> 时效轨迹扣款</label>
+                            <label><input type="radio" name="pay_type" value="time"> 仅时效扣款</label>
+                            <label><input type="radio" name="pay_type" value="path"> 仅轨迹扣款</label>
+                            <label><input type="radio" name="pay_type" value="not"> 无扣款</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="order_less_money">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="order_less_money_show" placeholder="结果在这里展示">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="order_less_money_list_table">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="order_sunzhuye_2">
+            <h4>联系人：孙竹叶</h4>
+            <div class="div-width">
+                <h2>修改运单装卸货地址，支持长短途，支持经停点</h2>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+
+                        <div class="col-sm-6">
+                            <select id="environment_szy_2" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">运单号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="order_sn_szy_2" placeholder="请输入运单号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">长短途选择</label>
+                        <div class="col-sm-6">
+                            <label><input type="radio" name="is_long" value="0" checked> 短途</label>
+                            <label><input type="radio" name="is_long" value="1"> 长途</label>
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">是否添加经停点</label>
+                        <div class="col-sm-6">
+                            <label><input type="radio" name="has_stop" value="0" checked>无经停点 </label>
+                            <label><input type="radio" name="has_stop" value="1"> 有经停点</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="order_update_address">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="order_update_address_show" placeholder="结果在这里展示">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="order_update_address_list_table">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="order_guobaohui_1">
+            <h4>联系人：郭宝慧</h4>
+            <div class="div-width">
+                <center><h2>智能调度派车开关</h2></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+
+                        <div class="col-sm-6">
+                            <select id="environment3" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">操作类型</label>
+                        <div class="col-sm-6">
+                            <label><input type="radio" name="opt_type" value="on">打开</label>
+                            <label><input type="radio" name="opt_type" value="off">关闭</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="scheduleSwitchSubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="schedule_switch_result" placeholder="结果在这里展示">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="schedule_switch_table">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade in active" id="order_guobaohui_2">
+            <h4>联系人：郭宝慧</h4>
+            <div style="margin: 50px auto; width: 80%">
+                <!--            <div class="div-width">-->
+                <center><h2>运单数据生成</h2></center>
+                <p>&nbsp;</p>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-3 control-label">环境</label>
+
+                        <div class="col-sm-6">
+                            <select id="appoint_order_env" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-3 control-label">运单类型</label>
+                        <div class="col-sm-6">
+                            <select id="appoint_order_type" class="selectpicker" title="请选择运单类型" style="width: 50px">
+                                <option value="22" selected>22-项目货订单</option>
+                                <option value="21">21-图灵订单</option>
+                                <option value="25">25-意向单</option>
+                                <option value="28">28-专车订单</option>
+                                <!--                                <option value="26">26-计划项目货订单</option>-->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-3 control-label">运力类型</label>
+                        <div class="col-sm-6">
+                            <select id="appoint_transfer_type" class="selectpicker" title="请选择运力类型" style="width: 50px">
+                                <option value="0" selected>0-一口价</option>
+                                <option value="1">1-调度自营</option>
+                                <option value="2">2-日包车</option>
+                                <option value="3">3-固定司机</option>
+                                <option value="4">4-智能调度</option>
+                                <option value="5">5-企业运力</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="auto_query_create_time_div" hidden class="form-group">
+                        <label for="inputEmail" class="col-sm-3 control-label">生成时间</label>
+                        <div class="col-sm-6">
+                            <input type="datetime-local" class="form-control" id="auto_query_create_time"
+                                   placeholder="请选择生成时间">
+                        </div>
+                    </div>
+                    <div id="appoint_order_offline_pay_div" hidden class="form-group">
+                        <label for="inputEmail" class="col-sm-3 control-label">线下支付</label>
+                        <div class="col-sm-6">
+                            <label><input type="radio" name="appoint_order_offline_pay" value="on">是</label>
+                            &nbsp;&nbsp;
+                            <label><input type="radio" name="appoint_order_offline_pay" value="off" checked="checked">否</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-3 control-label">指定运单状态</label>
+                        <div class="col-sm-6">
+                            <select id="appoint_order_status" class="selectpicker" title="请选择运单状态" style="width: 50px">
+                                <option value="1">1-待审核</option>
+                                <option value="2">2-待报价</option>
+                                <option value="3">3-待下单</option>
+                                {#                                <option value="4">4-待支付</option>#}
+                                {#                                <option value="5">5-转账审核中</option>#}
+                                <option value="6">6-待安排司机</option>
+                                <option value="7">7-已安排司机</option>
+                                <option value="8">8-待发车</option>
+                                <option value="9">9-卸货完成</option>
+                                <option value="10">10-已签收</option>
+                                {#                                <option value="11">11-询价取消</option>#}
+                                {#                                <option value="12">12-成单取消</option>#}
+                                {#                                <option value="13">13-待抢单</option>#}
+                                {#                                <option value="14">14-待接单</option>#}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-10">
+                            <span style="font-family: verdana; color: indianred; ">注：运单生成时间大概为半分钟，请耐心等待！</span><br>
+                            <span style="font-family: verdana; color: indianred; ">注：意向单不允许签收！</span><br>
+                            <span style="font-family: verdana; color: indianred; ">注：意向单生成时间控件只支持 Chrome 浏览器！</span><br>
+                            <span style="font-family: verdana; color: indianred; ">注：目前运单安排的都是预置的司机，多人操作同一环境、同一类型的运单会有冲突，
+需要手动完结运单（异常修改--司机卸货完成），释放司机，以免影响他人</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="appointOrderSubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-3 control-label">结果展示区域</label>
+                        <div class="col-sm-4">
+                            <!--                            <input type="text" class="form-control" id="appoint_order_result" placeholder="结果在这里展示">-->
+                            <textarea class="form-control" rows="3" id="appoint_order_result"
+                                      style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="appoint_order_table">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="order_zhangjian_9">
+            <h4>联系人：张健</h4>
+            <div class="div-width">
+                <center><h2>生成意向单</h2></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+                        <div class="col-sm-6">
+                            <select id="environment_yxd" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">意向单类型</label>
+                        <div class="col-sm-6">
+                            <select id="auto_query_type" class="selectpicker" title="请选择意向单类型" style="width: 50px">
+                                <option value="1">批量生成意向单</option>
+                                <option value="2">按线路id生成意向单</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="hide_name" class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">线路id</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="line_id" placeholder="请输入线路id">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">生成时间</label>
+                        <div class="col-sm-6">
+                            <input type="datetime-local" class="form-control" id="create_time" placeholder="请选择生成时间">
+                        </div>
+                    </div>
+                    <span><i aria-label="图标: info-circle" class="anticon anticon-info-circle index__infoIcon--1fdUT"><svg
+                            viewBox="64 64 896 896" class="" data-icon="info-circle" width="1em" height="1em"
+                            fill="currentColor" aria-hidden="true" focusable="false"><path
+                            d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path><path
+                            d="M464 336a48 48 0 1 0 96 0 48 48 0 1 0-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"></path></svg></i>
+                    目前只是账号12888888888，Ab@123456789所在的默认规则，生成的意向单全能看到
+         </span>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-8">
+                            <button type="submit" class="btn btn-danger" id="createAutoQuery">生成意向单</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                    <textarea class="form-control" rows="10" id="auto_query_result"
+                              style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="auto_query_table">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="order_zhangjian_10">
+            <h4>联系人：张健，郭宝慧，杨文学，李琦</h4>
+            <div class="div-width">
+                <center><h2>运单指定操作</h2></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-3 control-label">环境</label>
+                        <div class="col-sm-6">
+                            <select id="operate_appoint_order_env" class="selectpicker" title="请选择环境"
+                                    style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-3 control-label">运单号</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="operate_appoint_order_sn" placeholder="请输入运单号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-3 control-label">指定运单状态</label>
+                        <div class="col-sm-6">
+                            <select id="operate_appoint_order_status" class="selectpicker" title="请选择运单指定操作"
+                                    style="width: 50px">
+                                <option value="0">初审</option>
+                                <option value="1">报价</option>
+                                <option value="2">确认下单</option>
+                                <option value="3">在线支付及审核</option>
+                                <option value="4">安排司机</option>
+                                <!--                                <option value="6">调度确认司机符合</option>-->
+                                <!--                                <option value="6">调度确认司机不符合</option>-->
+                                <!--                                <option value="5">运单打点（单个）</option>-->
+                                <option value="6">运单打点（全部）</option>
+                                <option value="7">卸货完成</option>
+                                <option value="8">签收</option>
+                                <option value="9">调度确认运单</option>
+                                <option value="12">上传回单并审核通过</option>
+                                <option value="11">上传回单并审核不通过</option>
+                                <option value="13">收回单</option>
+                                <option value="14">举证上报</option>
+                                <option value="16">司机提款</option>
+                                <option value="17">企业运力提款</option>
+
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="operateAppointOrderSubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-3 control-label">结果展示区域</label>
+                        <div class="col-sm-4">
+                            <!--                            <textarea class="form-control" rows="10" id="operate_appoint_order_result"-->
+                            <!--                              style=" width: 100%; align-content: center"></textarea>-->
+                            <!--                            <input type="text" class="form-control" id="operate_appoint_order_result" placeholder="结果在这里展示">-->
+                            <textarea class="form-control" rows="3" id="operate_appoint_order_result"
+                                      style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="operate_appoint_order_table">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block script %}
+    <script src="/static/js/order_tools.js"></script>
+{% endblock %}

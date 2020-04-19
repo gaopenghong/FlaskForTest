@@ -1,0 +1,10 @@
+*.pyc
+*.logs
+logs/
+*.log
+.idea
+*swp
+venv/
+env/
+manage.
+*.xls

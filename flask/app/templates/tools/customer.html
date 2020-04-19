@@ -1,0 +1,465 @@
+{% extends "base.html" %}
+{% block body %}
+    <ul id="myTab" class="nav nav-tabs">
+        <li class="active">
+            <a href="#customer" data-toggle="tab">
+                专车下单
+            </a>
+        </li>
+        <li>
+            <a href="#customer_1" data-toggle="tab">
+                线路ID下单
+            </a>
+        </li>
+        <li>
+            <a href="#customer_2" tabindex="-1" data-toggle="tab">
+                运单上传司机定位
+            </a>
+        </li>
+        <li>
+            <a href="#customer_4" tabindex="-1" data-toggle="tab">
+             产生压车费
+            </a>
+        </li>
+        <li>
+            <a href="#customer_6" tabindex="-1" data-toggle="tab">
+             发放优惠卷
+            </a>
+        </li>
+        {#        <li class="dropdown">#}
+        {#            <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown">#}
+        {#                其他客户#}
+        {#                <b class="caret">#}
+        {#                </b>#}
+        {#            </a>#}
+        {#            <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">#}
+        {##}
+        {#                <li>#}
+        {#                    <a href="#customer_4" tabindex="-1" data-toggle="tab">#}
+        {#                        客户4#}
+        {#                    </a>#}
+        {#                </li>#}
+        {#                <li>#}
+        {#                    <a href="#customer_5" tabindex="-1" data-toggle="tab">#}
+        {#                        客户5#}
+        {#                    </a>#}
+        {#                </li>#}
+        {#            </ul>#}
+        {#        </li>#}
+    </ul>
+    <!-- 每个tab页对应的内容 -->
+    <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade in active" id="customer">
+            <h4>联系人：李琦</h4>
+            <div class="div-width">
+                <center><h2>专车下单</h2></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境<span style="color:red">*</span></label>
+                        <div class="col-sm-6">
+                            <select id="environment1" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">运单状态<span
+                                style="color:red">*</span></label>
+                        <div class="col-sm-6">
+                            <select id="order_status" class="selectpicker" title="请选择运单状态" style="width: 50px">
+                                <option value="2" selected>派车中</option>
+                                <option value="1">待付款</option>
+                                {#                                <option value="3">运输中</option>#}
+                                {#                                <option value="4">待签收</option>#}
+                                {#                                <option value="5">已完成</option>#}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">车长车型<span
+                                style="color:red">*</span></label>
+                        <div class="col-sm-6">
+                            <select id="car_length" class="selectpicker" title="请选择车长" style="width: 50px">
+                                <option value="1" selected>9.6米厢式车</option>
+                                {#                                <option value="2">7.6米厢式车</option>#}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">手机号<span
+                                style="color:red">*</span></label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="customer_mobile1" placeholder="请输入手机号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">下单数量<span
+                                style="color:red">*</span></label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="order_num" value="1"
+                                   placeholder="请输入下单数量（暂时不要大于2）">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">装货时间</label>
+                        <div class="col-sm-6">
+                            <input type="datetime-local" class="form-control" id="load_time" placeholder="请选择装货时间">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">装货地</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="start_address"
+                                   placeholder="山东、江苏-南京、北京-北京-海淀区（选填）">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">卸货地</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="end_address"
+                                   placeholder="山东、江苏-南京、北京-北京-海淀区（选填）">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">支付金额</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="order_price" placeholder="请输入支付金额（修改支付金额时填写）">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">回单要求</label>
+                        <div class="col-sm-6">
+                            <select id="receipt_need" class="selectpicker" title="请选择是否需要回单" style="width: 50px">
+                                <option value="0" selected>不需要</option>
+                                <option value="1">需要</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">智能调度</label>
+                        <div class="col-sm-6">
+                            <select id="dispatch_ai" class="selectpicker" title="请选择是否智能调度" style="width: 50px">
+                                <option value="off" selected>否</option>
+                                <option value="on">是</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">经停点要求</label>
+                        <div class="col-sm-6">
+                            <select id="stop_need" class="selectpicker" title="请选择是否需要经停点" style="width: 50px">
+                                <option value="0" selected>无</option>
+                                <option value="1">有</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">备注信息</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="comment" placeholder="请输入备注信息（选填）">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="customerConfirmSubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                    <textarea class="form-control" rows="10" id="customer_confirm_result"
+                              style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="customer_confirm_list_table">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="customer_1">
+            <h4>联系人：李琦</h4>
+            <div class="div-width">
+                <center><h2>项目货线路ID下单</h2></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境<span style="color:red">*</span></label>
+                        <div class="col-sm-6">
+                            <select id="environment2" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">运单状态<span
+                                style="color:red">*</span></label>
+                        <div class="col-sm-6">
+                            <select id="order_status2" class="selectpicker" title="请选择运单状态" style="width: 50px">
+                                <option value="2" selected>待安排司机</option>
+                                <option value="1">待确认下单</option>
+                                {#                                <option value="3">运输中</option>#}
+                                {#                                <option value="4">待签收</option>#}
+                                {#                                <option value="5">已完成</option>#}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">线路ID<span
+                                style="color:red">*</span></label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="line_id" placeholder="请输入项目货线路ID">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">下单数量<span
+                                style="color:red">*</span></label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="order_num2" value="1" placeholder="请输入下单数量">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="quoteByLineIdSubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                    <textarea class="form-control" rows="10" id="quote_line_id_result"
+                              style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="quote_line_id_table">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="customer_2">
+            <h4>联系人：李琦</h4>
+            <div class="div-width">
+                <center><h2>运单上传司机定位</h2></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境<span style="color:red">*</span></label>
+                        <div class="col-sm-6">
+                            <select id="environment3" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">类型<span style="color:red">*</span></label>
+                        <div class="col-sm-6">
+                            <select id="action_type3" class="selectpicker" title="请选择类型" style="width: 50px">
+                                <option value="1" selected>上传定位</option>
+                                <option value="2">上传心跳</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">运单号<span
+                                style="color:red">*</span></label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="order_sn3" placeholder="请输入运单号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">经纬度<span
+                                style="color:red">*</span></label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="lng_lat3"
+                                   placeholder="请输入经纬度（116.397451,39.909187）">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="orderPositionSubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                    <textarea class="form-control" rows="10" id="order_position_heartbeat_result"
+                              style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="order_position_heartbeat_table">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="customer_3">
+            <h4>联系人：李琦</h4>
+            <div class="div-width">
+                <center><h2>运输中各状态运单（规划中）</h2></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+                        <div class="col-sm-6">
+                            <select id="environment" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">运单号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="order_sn" placeholder="请输入运单号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">运输状态</label>
+                        <div class="col-sm-6">
+                            <select id="transport_status" class="selectpicker" title="请选择运输状态" style="width: 50px">
+                                <option value="1" selected>安排司机无定位</option>
+                                <option value="2">安排司机有定位</option>
+                                <option value="3">前往装货地</option>
+                                <option value="4">到达装货地</option>
+                                <option value="5">前往经停点</option>
+                                <option value="6">到达经停点</option>
+                                <option value="7">离开经停点</option>
+                                <option value="8">到达卸货地</option>
+                                <option value="9">已卸货完成</option>
+                                <option value="10">紧急派车中</option>
+                                <option value="11">紧急运输中</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="orderTransportStatusSubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                    <textarea class="form-control" rows="10" id="transport_status_result"
+                              style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="transport_status_list">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="customer_4">
+            <h4>联系人：霍爱梅</h4>
+            <div class="div-width">
+                <center><h2>产生压车费</h2></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境<span style="color:red">*</span></label>
+                        <div class="col-sm-6">
+                            <select id="environment4" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">运单号<span
+                                style="color:red">*</span></label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="order_sn4" placeholder="请输入运单号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">压车时长<span
+                                style="color:red">*</span></label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="time_out4"
+                                   placeholder="请输入时间">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="orderTimeOutSubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                    <textarea class="form-control" rows="10" id="order_time_out_result"
+                              style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="order_time_out_table">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="customer_5">
+            <h4>联系人：</h4>
+            客户6
+        </div>
+        <div class="tab-pane fade" id="customer_6">
+            <h4>联系人：霍爱梅</h4>
+            <div class="div-width">
+                <center><h2>发放优惠卷</h2></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境<span style="color:red">*</span></label>
+                        <div class="col-sm-6">
+                            <select id="environment6" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">手机号<span
+                                style="color:red">*</span></label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="mobile6" placeholder="请输入手机号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">数量<span
+                                style="color:red">*</span></label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="number6" placeholder="请输入优惠卷数量">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="giveCouponSubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                    <textarea class="form-control" rows="10" id="give_coupon_result"
+                              style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="give_coupon_table">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+{% endblock %}
+
+{% block script %}
+    <script src="/static/js/customer_tools.js"></script>
+{% endblock %}

@@ -1,0 +1,734 @@
+{% extends "base.html" %}
+{% block body %}
+    <ul id="myTab" class="nav nav-tabs">
+        <li class="active">
+            <a href="#paymentChannels" data-toggle="tab">
+                财务测试支付通道开启
+            </a>
+        </li>
+        <li>
+            <a href="#finance_1" data-toggle="tab">
+                在线支付审核
+            </a>
+        </li>
+        <li>
+            <a href="#finance_syh" tabindex="-1" data-toggle="tab">
+                企业运力补贴
+            </a>
+        </li>
+        <li>
+            <a href="#updateJinRongChannel" tabindex="-1" data-toggle="tab">
+                金融渠道配置
+            </a>
+        </li>
+        <li>
+            <a href="#finance_6" tabindex="-1" data-toggle="tab">
+                运单批量对账
+            </a>
+        </li>
+        <li>
+            <a href="#finance_7" tabindex="-1" data-toggle="tab">
+                批量修改放空费
+            </a>
+        </li>
+        <li>
+            <a href="#finance_8" tabindex="-1" data-toggle="tab">
+                生成资金单
+            </a>
+        </li>
+        <li>
+            <a href="#finance_9" tabindex="-1" data-toggle="tab">
+                內部关联开票
+            </a>
+        </li>
+        <li>
+            <a href="#driver_rewards_management" tabindex="-1" data-toggle="tab">
+                司机奖励管理
+            </a>
+        </li>
+        <li>
+            <a href="#finance_11" tabindex="-1" data-toggle="tab">
+                企业运力违约金
+            </a>
+        </li>
+        <li>
+            <a href="#finance_12" tabindex="-1" data-toggle="tab">
+                企业运力账期内提款
+            </a>
+        </li>
+        <li>
+            <a href="#finance_13" tabindex="-1" data-toggle="tab">
+                企业运力销项税发票
+            </a>
+        </li>
+        <li>
+            <a href="#finance_14" tabindex="-1" data-toggle="tab">
+                企业运力账期外提款
+            </a>
+        </li>
+{#        <li class="dropdown">#}
+{#            <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown">#}
+{#                其他财务#}
+{#                <b class="caret">#}
+{#                </b>#}
+{#            </a>#}
+{#            <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">#}
+{##}
+{#                <li>#}
+{#                    <a href="#finance_4" tabindex="-1" data-toggle="tab">#}
+{#                        财务4#}
+{#                    </a>#}
+{#                </li>#}
+{#                <li>#}
+{#                    <a href="#finance_5" tabindex="-1" data-toggle="tab">#}
+{#                        财务5#}
+{#                    </a>#}
+{#                </li>#}
+{#            </ul>#}
+{#        </li>#}
+        {#        <li>#}
+        {#            <a href="#finance_2" tabindex="-1" data-toggle="tab">#}
+        {#                财务2#}
+        {#            </a>#}
+        {#        </li>#}
+        {#        <li>#}
+        {#            <a href="#finance_3" tabindex="-1" data-toggle="tab">#}
+        {#                财务3#}
+        {#            </a>#}
+        {#        </li>#}
+        {#        <li class="dropdown">#}
+        {#            <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown">#}
+        {#                其他财务#}
+        {#                <b class="caret">#}
+        {#                </b>#}
+        {#            </a>#}
+        {#            <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">#}
+        {##}
+        {#                <li>#}
+        {#                    <a href="#finance_4" tabindex="-1" data-toggle="tab">#}
+        {#                        财务4#}
+        {#                    </a>#}
+        {#                </li>#}
+        {#                <li>#}
+        {#                    <a href="#finance_5" tabindex="-1" data-toggle="tab">#}
+        {#                        财务5#}
+        {#                    </a>#}
+        {#                </li>#}
+        {#            </ul>#}
+        {#        </li>#}
+    </ul>
+    <!-- 每个tab页对应的内容 -->
+    <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade in active" id="paymentChannels">
+            <h4>联系人：王雪芹</h4>
+            <div class="div-width">
+                <h2>测试支付通道开启</h2>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+                        <div class="col-sm-6">
+                            <select id="env" class="selectPicker" title="请选择环境" style="width: 50px">
+                                <option value="r1" selected>r1</option>
+                                <option value="r2">r2</option>
+                                <option value="t1">t1</option>
+                                <option value="t2">t2</option>
+                                <option value="t3">t3</option>
+                                <option value="t4">t4</option>
+                                <option value="t5">t5</option>
+                                <option value="t6">t6</option>
+                                <option value="t7">t7</option>
+                                <option value="t8">t8</option>
+                                <option value="t9">t9</option>
+                                <option value="t10">t10</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">开启/关闭</label>
+                        <div class="col-sm-6">
+                            <form id="operate_id" class="selectPicker" title="开启/关闭" style="width: 50px">
+                                <input type="radio" name="PaymentChannel" value="开启支付通道" checked="checked">开启
+                                <input type="radio" name="PaymentChannel" value="关闭支付通道">关闭
+                            </form>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="paymentChannelsSubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="paymentChannelsShow" placeholder="结果在这里展示">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="payment_channels_list_table">
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="updateJinRongChannel">
+            <h4>联系人：王雪芹</h4>
+            <div class="div-width">
+                <h2>金融渠道配置</h2>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+                        <div class="col-sm-6">
+                            <select id="env_update_channel" class="selectPicker" title="请选择环境" style="width: 50px">
+                                <option value="r1" selected>r1</option>
+                                <option value="r2">r2</option>
+                                <option value="t1">t1</option>
+                                <option value="t2">t2</option>
+                                <option value="t3">t3</option>
+                                <option value="t4">t4</option>
+                                <option value="t5">t5</option>
+                                <option value="t6">t6</option>
+                                <option value="t7">t7</option>
+                                <option value="t8">t8</option>
+                                <option value="t9">t9</option>
+                                <option value="t10">t10</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">司机提现渠道</label>
+                        <div class="col-sm-6">
+                            <form id="value_update_channel" class="selectPicker" title="司机提现渠道" style="width: 50px">
+                                <input type="radio" name="updateChannel" value=0 checked="checked">云信
+                                <input type="radio" name="updateChannel" value=1>平安
+                            </form>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="updateChannelSubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="updateChannelsShow" placeholder="结果在这里展示">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="update_channels_list_table">
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane " id="driver_rewards_management">
+            <h4>联系人：王雪芹</h4>
+            <div class="div-width">
+                <h2>司机奖励管理</h2>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+                        <div class="col-sm-6">
+                            <select id="env" class="selectPicker" title="请选择环境" style="width: 115px">
+                                <option value="r1" selected>r1</option>
+                                <option value="r2">r2</option>
+                                <option value="t1">t1</option>
+                                <option value="t2">t2</option>
+                                <option value="t3">t3</option>
+                                <option value="t4">t4</option>
+                                <option value="t5">t5</option>
+                                <option value="t6">t6</option>
+                                <option value="t7">t7</option>
+                                <option value="t8">t8</option>
+                                <option value="t9">t9</option>
+                                <option value="t10">t10</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">操作类型</label>
+                        <div class="col-sm-6">
+                            <select id="operate_id" class="selectPicker" title="操作类型" style="width: 115px">
+                                <option value="" selected>请下拉选择</option>
+                                <option value="ProvideDriverRewards">发放奖励</option>
+                                <option value="DriverRewardsWithdraw">奖励提现</option>
+                                <option value="DriverRewardsQuery">奖励查询</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group select-change">
+                        <label for="inputEmail" class="col-sm-2 control-label">司机ID/手机号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="id_or_mobile" style="width: 175px"
+                                   placeholder="请输入司机ID/手机号">
+                        </div>
+                    </div>
+                    <div class="form-group select-change">
+                        <label for="inputName" class="col-sm-2 control-label">奖励类型</label>
+                        <div class="col-sm-6">
+                            <select id="reward_type" class="selectPicker" title="操作类型" style="width: 115px">
+                                <option value="2" selected>日包车奖励</option>
+                                <option value="3">长途包车奖励</option>
+                                <option value="4">里程奖励</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group select-change">
+                        <label for="inputEmail" class="col-sm-2 control-label">奖励金额</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="reward_amount" style="width: 175px"
+                                   placeholder="请输入奖励金额">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="driverRewardsManagementSubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group driver_reward_show_area" id="driverRewardsManagementArea1">
+                        <label for="inputEmail" class="col-sm-2 control-label"
+                        >结果展示区域</label>
+                        <div class="col-sm-6">
+                            <div class="form-control" rows="10" id="driverRewardsManagementShow"
+                                      style=" width: 100%;height: 100px"></div>
+                        </div>
+                    </div>
+                    <div class="form-group driver_reward_show_area" id="driverRewardsManagementArea2">
+                        <label for="inputEmail" class="col-sm-2 control-label"
+                        >结果展示区域</label>
+                        <div class="col-sm-6">
+                            <div class="form-control" rows="10" id="driverRewardsManagementShow2"
+                                      style=" width: 100%; height: 500px">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <table id="driver_rewards_management_list_table">
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="finance_1">
+            <h4>联系人：单欣欣</h4>
+            <div class="div-width">
+                <center><h2>在线支付审核</h2></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+                        <div class="col-sm-6">
+                            <select id="environment" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">运单号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="caiwuOrderSn" placeholder="请输入运单号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">审核状态</label>
+                        <div class="col-sm-6">
+                            <select id="caiwuStatus" class="selectpicker" title="状态" style="width: 50px">
+                                <option value="审核通过" selected>审核通过</option>
+                                <option value="审核拒绝">审核拒绝</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="caiwuSubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                        <textarea class="form-control" rows="10" id="add_caiwu_result"
+                                  style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="finance_check_order_table">
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="finance_syh">
+            <h4>联系人：沈玉会</h4>
+            <div class="div-width">
+                <center><h2>企业运力补贴</h2></center>
+                <center><h4>（企业运力运单下单至已安排司机，待发车状态）</h4></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+                        <div class="col-sm-6">
+                            <select id="environment_syh" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">运单号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="order_sn_syh" placeholder="请输入运单号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="financeAllowanceSubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                            <textarea class="form-control" rows="10" id="add_caiwu_result_syh"
+                                      style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="finance_agent_allowance_table">
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="finance_3">
+            <h4>联系人：</h4>
+            财务4
+        </div>
+        <div class="tab-pane fade" id="finance_6">
+            <h4>联系人：单欣欣</h4>
+            <div class="div-width">
+                <center><h2>运单批量对账</h2></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+                        <div class="col-sm-6">
+                            <select id="finance_checking_env" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">运单号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="finance_checking_orders"
+                                   placeholder="请输入运单号，以空格隔开">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="finance_checking_orders_submit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                        <textarea class="form-control" rows="10" id="add_finance_checking_result"
+                                  style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="finance_order_checking_table">
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="finance_7">
+            <h4>联系人：单欣欣</h4>
+            <div class="div-width">
+                <center><h2>运单修改放空费</h2></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+                        <div class="col-sm-6">
+                            <select id="finance_modify_punish_fee_views_env" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">运单号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="finance_modify_punish_fee_order" placeholder="请输入运单号，以空格隔开">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">放空费修改金额</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="finance_modify_punish_fee_momey" placeholder="请输入修改的金额，以空格隔开">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="finance_modify_punish_fee_submit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                        <textarea class="form-control" rows="10" id="add_finance_modify_punish_fee_result"
+                                  style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="finance_modify_punish_fee_table">
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="finance_8">
+            <h4>联系人：单欣欣</h4>
+            <div class="div-width">
+                <center><h2>生成资金单</h2></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+                        <div class="col-sm-6">
+                            <select id="finance_new_fund_doc_views_env" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">想创建的资金单个数</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="finance_new_fund_doc_number" placeholder="请输入想创建的资金单个数">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="finance_new_fund_doc_submit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                        <textarea class="form-control" rows="10" id="add_finance_new_fund_doc_result"
+                                  style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="finance_new_fund_doc_table">
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="finance_9">
+            <h4>联系人：沈玉会</h4>
+            <div class="div-width">
+                <center><h2>内部关联运单开票</h2></center>
+                <center><h4>（非主业开票-内部关联开票数据来源，运单下单至签收状态）</h4></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+                        <div class="col-sm-6">
+                            <select id="environment_internal" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">运单号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="order_sn_internal" placeholder="请输入运单号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="financeFyInternalInvoiceSubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                            <textarea class="form-control" rows="10" id="add_caiwu_result_internal"
+                                      style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="finance_fy_internal_table">
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="finance_11">
+            <h4>联系人：沈玉会</h4>
+            <div class="div-width">
+                <center><h2>企业运力违约金</h2></center>
+                <center><h4>（企业运力收款单-待收款数据来源）</h4></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+                        <div class="col-sm-6">
+                            <select id="environment_default" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">运单号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="order_sn_default" placeholder="请输入运单号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="FinanceAgentDefaultMoneySubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                            <textarea class="form-control" rows="10" id="add_caiwu_result_default_money"
+                                      style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="finance_fy_default_table">
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="finance_12">
+            <h4>联系人：沈玉会</h4>
+            <div class="div-width">
+                <center><h2>企业运力账期内提款</h2></center>
+                <center><h4>（企业运力运单下单至签收）</h4></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+                        <div class="col-sm-6">
+                            <select id="environment_month_money" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">运单号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="order_sn_month_money" placeholder="请输入运单号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="FinanceAgentMonthMoneySubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                            <textarea class="form-control" rows="10" id="add_caiwu_result_month_money"
+                                      style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="finance_fy_month_money_table">
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="finance_13">
+            <h4>联系人：沈玉会</h4>
+            <div class="div-width">
+                <center><h2>企业运力符合结算批的销项税发票</h2></center>
+                <center><h4>（输入运单号可造符合运单所在结算批的发票）</h4></center>
+                <center><h5>（前提：税务系统有已开票的其他发票；运单结算批已确认月度账单）</h5></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+                        <div class="col-sm-6">
+                            <select id="environment_tax_bill" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">运单号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="order_sn_tax" placeholder="请输入运单号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="FinanceAgentTaxBillSubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                            <textarea class="form-control" rows="10" id="add_caiwu_result_tax_bill"
+                                      style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="finance_agent_tax_bill_table">
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="finance_14">
+            <h4>联系人：沈玉会</h4>
+            <div class="div-width">
+                <center><h2>企业运力账期日（外）提款</h2></center>
+                <center><h4>（输入运单号可对该运单所在结算批进行账期外提款）</h4></center>
+                <center><h5>（前提：运单符合提款卡控条件，运单所在结算批发票审核通过）</h5></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+                        <div class="col-sm-6">
+                            <select id="environment_account_pay" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">运单号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="order_sn_account" placeholder="请输入运单号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="FinanceAgentAccountPaySubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                            <textarea class="form-control" rows="10" id="add_caiwu_result_account"
+                                      style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="finance_agent_account_pay_table">
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="finance_5">
+            <h4>联系人：</h4>
+            财务6
+        </div>
+
+    </div>
+
+
+{% endblock %}
+
+{% block script %}
+    <script src="/static/js/finance_tools.js"></script>
+{% endblock %}

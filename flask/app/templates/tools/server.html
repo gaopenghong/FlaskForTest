@@ -1,0 +1,436 @@
+{% extends "base.html" %}
+{% block body %}
+    <ul id="myTab" class="nav nav-tabs">
+        {#        <li class="active">#}
+        {#            <a href="#server" data-toggle="tab">#}
+        {#                任务处理#}
+        {#            </a>#}
+        {#        </li>#}
+        <li class="active">
+            <a href="#server_1" data-toggle="tab">
+                任务无法被分配原因查询
+            </a>
+        </li>
+        <li>
+            <a href="#server_2" data-toggle="tab">
+                清空列表（工单/任务）
+            </a>
+        </li>
+        <li>
+            <a href="#server_3" data-toggle="tab">
+                生成任务
+            </a>
+        </li>
+        <li>
+            <a href="#server_4" data-toggle="tab">
+                在线客服批量创建数据(敏感词/违禁词)
+            </a>
+        </li>
+        <li>
+            <a href="#server_5" data-toggle="tab">
+                在线客服批量创建数据(会话标签)
+            </a>
+        </li>
+        <li>
+            <a href="#server_6" data-toggle="tab">
+                在线客服批量创建数据(快捷回复)
+            </a>
+        </li>
+        {#        <li class="dropdown">#}
+        {#            <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown">#}
+        {#                其他服务系统#}
+        {#                <b class="caret">#}
+        {#                </b>#}
+        {#            </a>#}
+        {#            <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">#}
+        {##}
+        {#                <li>#}
+        {#                    <a href="#server_4" tabindex="-1" data-toggle="tab">#}
+        {#                        服务系统4#}
+        {#                    </a>#}
+        {#                </li>#}
+        {#                <li>#}
+        {#                    <a href="#server_5" tabindex="-1" data-toggle="tab">#}
+        {#                        服务系统5#}
+        {#                    </a>#}
+        {#                </li>#}
+        {#            </ul>#}
+        {#        </li>#}
+    </ul>
+    <!-- 每个tab页对应的内容 -->
+    <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade" id="server">
+            <h4>联系人：李东东</h4>
+            <div class="div-width">
+                {#       <div class="tab-pane" id="settings">#}
+                <center><h2>任务处理</h2></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+
+                        <div class="col-sm-6">
+                            <select id="environment" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">运单号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="orderId" placeholder="请输入运单号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">任务编号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="taskId" placeholder="请输入任务编号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">审核状态</label>
+
+                        <div class="col-sm-6">
+                            <select id="checkStatus" class="selectpicker" title="请选择审核状态" style="width: 50px">
+                                <option value="pass" selected>通过</option>
+                                <option value="reject">不通过</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="taskSubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                    <textarea class="form-control" rows="10" id="add_admin_result"
+                              style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="service_task_table">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade in active" id="server_1">
+            <h4>联系人：殷强</h4>
+            <div class="div-width">
+                {#       <div class="tab-pane" id="settings">#}
+                <center><h2>任务无法被分配原因查询</h2></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+                        <div class="col-sm-6">
+                            <select id="env" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">后台账号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="user_mobile" placeholder="请输入后台账号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">任务编号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="task_id" placeholder="请输入任务编号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="taskNottoAllocateCheckSubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                    <textarea class="form-control" rows="10" id="task_check_result" placeholder="执行结果展示"
+                              style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="service_list_table">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="server_2">
+            <h4>联系人：殷强</h4>
+            <div style="margin: 50px auto; width: 50%">
+                {#       <div class="tab-pane" id="settings">#}
+                <center><h2>清空列表（工单/任务）</h2></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+                        <div class="col-sm-6">
+                            <select id="env2" class="selectpicker" title="请选择环境" style="width: 50px">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">后台账号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="user_mobile2" placeholder="请输入后台账号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">类型</label>
+                        <div class="col-sm-6">
+                            <select id="deal_type" class="selectpicker" title="请选择类型" style="width: 50px">
+                                <option value="0" selected>工单</option>
+                                <option value="1">任务</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">处理类型</label>
+                        <div class="col-sm-6">
+                            <select id="method_type" class="selectpicker" title="请选择处理类型" style="width: 50px">
+                                <option value="1" selected>完结处理</option>
+                                <option value="2">暂存处理</option>
+                                <option value="3">流转处理</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="taskOrWrkordAllDealSubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                    <textarea class="form-control" rows="10" id="taskorwrkordalldeal_result" placeholder="执行结果展示"
+                              style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="service_list2_table">
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="server_3">
+            <h4>联系人：殷强</h4>
+            <div style="margin: 50px auto; width: 50%">
+                {#       <div class="tab-pane" id="settings">#}
+                <center><h2>生成任务(请准备一个安排完司机的运单号)</h2></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+                        <div class="col-sm-6">
+                            <select id="env3" class="selectpicker" title="请选择环境" style="width: 50px">
+                            </select>
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">运单号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="order_sn" placeholder="请输入运单号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">任务名称</label>
+                        <div class="col-sm-6">
+                            <select id="task_type_id" class="selectpicker" title="请选择任务名称" style="width: 50px">
+                                <option value="3400" selected>回单审核</option>
+                                <option value="4000">司机付款申请</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="taskCreateDataSubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                    <textarea class="form-control" rows="10" id="taskcreatedata_result" placeholder="执行结果展示"
+                              style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="service_list3_table">
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="server_4">
+            <h4>联系人：高伟</h4>
+            <div style="margin: 50px auto; width: 50%">
+                {#       <div class="tab-pane" id="settings">#}
+                <center><h2>批量导入数据:</h2></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+                        <div class="col-sm-6">
+                            <select id="env4" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">创建数量</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="num" placeholder="请输入创建数量...最多一次输入30" onchange="if(/\D/.test(this.value)){alert('创建数量:只能输入数字');this.value='';}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">参数名</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="word_name" placeholder="请输入参数名...">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">输入类型</label>
+                        <div class="col-sm-6">
+                            <select id="task_im_type_id" class="selectpicker" title="请选择任务名称" style="width: 50px">
+                                <option value="0" selected>敏感词</option>
+                                <option value="1">违禁词</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="task_im_Submit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                    <textarea class="form-control" rows="10" id="task_im_result" placeholder="执行结果展示"
+                      style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="service_list4_table">
+                        </table>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="tab-pane fade" id="server_5">
+                <h4>联系人：高伟</h4>
+                <div style="margin: 50px auto; width: 50%">
+                    {#       <div class="tab-pane" id="settings">#}
+                    <center><h2>批量创建数据:</h2></center>
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="inputName" class="col-sm-2 control-label">环境</label>
+                            <div class="col-sm-6">
+                                <select id="env5" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail" class="col-sm-2 control-label">创建数量</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="num1" placeholder="请输入创建数量...最多输入30" onchange="if(/\D/.test(this.value)){alert('创建数量:只能输入数字');this.value='';}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail" class="col-sm-2 control-label">标签名</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="tag_name" placeholder="请输入标签名...">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputName" class="col-sm-2 control-label">输入类型</label>
+                            <div class="col-sm-6">
+                                <select id="task_im_role" class="selectpicker" title="请选择任务名称" style="width: 50px">
+                                    <option value="driver" selected>司机</option>
+                                    <option value="shipper">货主</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-danger" id="task_im_tag_Submit">执行</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                            <div class="col-sm-6">
+                        <textarea class="form-control" rows="10" id="task_im_tag_result" placeholder="执行结果展示"
+                              style=" width: 100%; align-content: center"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <table id="service_list5_table">
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="tab-pane fade" id="server_6">
+                <h4>联系人：高伟</h4>
+                    <div style="margin: 50px auto; width: 50%">
+                        {#       <div class="tab-pane" id="settings">#}
+                        <center><h2>批量创建数据:</h2></center>
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label for="inputName" class="col-sm-2 control-label">环境</label>
+                                <div class="col-sm-6">
+                                    <select id="env6" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-sm-2 control-label">创建数量</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="num2" placeholder="请输入创建数量...最多输入30" onchange="if(/\D/.test(this.value)){alert('创建数量:只能输入数字');this.value='';}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-sm-2 control-label">快捷回复名</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="qr_name" placeholder="请输入快捷回复名称...">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputName" class="col-sm-2 control-label">输入类型</label>
+                                <div class="col-sm-6">
+                                    <select id="task_im_role_1" class="selectpicker" title="请选择任务名称" style="width: 50px">
+                                        <option value="driver" selected>司机</option>
+                                        <option value="shipper">货主</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-danger" id="task_im_qr_submit">执行</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                                <div class="col-sm-6">
+                        <textarea class="form-control" rows="10" id="task_im_qr_result" placeholder="执行结果展示"
+                      style=" width: 100%; align-content: center"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <table id="service_list6_table">
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+{% endblock %}
+
+{% block script %}
+    <script src="/static/js/server_tools.js"></script>
+{% endblock %}

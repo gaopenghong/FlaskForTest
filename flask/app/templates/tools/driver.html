@@ -1,0 +1,943 @@
+{% extends "base.html" %}
+{% block body %}
+    <ul id="myTab" class="nav nav-tabs">
+        <li class="active">
+            <a href="#driver_6" data-toggle="tab">
+                新建司机
+            </a>
+        </li>
+        <li>
+            <a href="#driver_13" tabindex="-1" data-toggle="tab">
+                批量给司机安排单子
+            </a>
+        </li>
+        <li>
+            <a href="#driver_15" tabindex="-1" data-toggle="tab">
+                司机运单状态
+            </a>
+        </li>
+        <li>
+            <a href="#driver_4" tabindex="-1" data-toggle="tab">
+                司机运单打点
+            </a>
+        </li>
+          <li>
+            <a href="#driver_14" tabindex="-1" data-toggle="tab">
+                一键处理所有异常
+            </a>
+        </li>
+         <li>
+            <a href="#driver_11" tabindex="-1" data-toggle="tab">
+                直接安排司机
+            </a>
+        </li>
+        <li>
+            <a href="#driver_12" tabindex="-1" data-toggle="tab">
+                日包车推标
+            </a>
+        </li>
+        <li>
+            <a href="#driver" tabindex="-1" data-toggle="tab">
+                司机人脸识别白名单
+            </a>
+        </li>
+        <li>
+            <a href="#driver_1" tabindex="-1" data-toggle="tab">
+                司机交抢单押金
+            </a>
+        </li>
+        <li>
+            <a href="#driver_5" tabindex="-1" data-toggle="tab">
+                调度确定司机订单
+            </a>
+        </li>
+        <li>
+            <a href="#driver_10" tabindex="-1" data-toggle="tab">
+                司机提款
+            </a>
+        </li>
+
+        <li class="dropdown">
+            <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown">
+                司机其他功能
+                <b class="caret">
+                </b>
+            </a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
+                <li>
+                    <a href="#driver_7" tabindex="-1" data-toggle="tab">
+                        司机上传回单且审核
+                    </a>
+                </li>
+                <li>
+                    <a href="#driver_8" tabindex="-1" data-toggle="tab">
+                        司机举证上报
+                    </a>
+                </li>
+                <li>
+                    <a href="#driver_9" tabindex="-1" data-toggle="tab">
+                        调度确认完结
+                    </a>
+                </li>
+                <li>
+                    <a href="#driver_2" tabindex="-1" data-toggle="tab">
+                        司机绑卡白名单
+                    </a>
+                </li>
+                <li>
+                    <a href="#driver_3" tabindex="-1" data-toggle="tab">
+                        司机绑卡
+                    </a>
+                </li>
+                </li>
+            </ul>
+
+        </li>
+    </ul>
+    <!-- 每个tab页对应的内容 -->
+    <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade " id="driver">
+            <h4>联系人：郭宝慧</h4>
+            <div class="div-width">
+                <center><h2>司机人脸识别白名单</h2></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+
+                        <div class="col-sm-6">
+                            <select id="environment" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">操作类型</label>
+                        <div class="col-sm-6">
+                            <label><input type="radio" name="opt_type" value="加入" checked> 加入白名单</label>
+                            <label><input type="radio" name="opt_type" value="移出"> 移出白名单</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">司机手机</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="driver_mobile" placeholder="请输入手机">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="driverWhiteListSubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                    <textarea class="form-control" rows="10" id="driver_white_list_result"
+                              style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="driver_white_list_table">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="driver_1">
+            <h4>联系人：郭冰洁</h4>
+            <div class="div-width">
+                {#       <div class="tab-pane" id="settings">#}
+                <center><h2>司机交押金</h2></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+
+                        <div class="col-sm-6">
+                            <select id="environment1" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">操作类型</label>
+                        <div class="col-sm-6">
+                            <label><input type="radio" checked="checked" name="opt_type_driverPayDeposit" value="抢单押金">
+                                交抢单押金</label>
+                            <label><input type="radio" name="opt_type_driverPayDeposit" value="固定线路"> 交固定线路押金</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">司机手机</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="driver_mobile_driverPayDeposit"
+                                   placeholder="请输入手机">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="driverPayDepositSubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                    <textarea class="form-control" rows="10" id="driver_paydeposit_result"
+                              style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="driver_paydeposit_list">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="driver_2">
+            <h4>联系人：郭冰洁</h4>
+            <div class="div-width">
+                {#       <div class="tab-pane" id="settings">#}
+                <center><h2>添加绑卡白名单</h2></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+
+                        <div class="col-sm-6">
+                            <select id="environment2" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">司机手机</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="driver_mobile_driverWhiteDrawing"
+                                   placeholder="请输入手机">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="driverWhiteDrawingSubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                    <textarea class="form-control" rows="10" id="driver_whitedrawing_result"
+                              style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="driver_whitedrawing_list">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="driver_3">
+            <h4>联系人：高鹏鸿</h4>
+            <div class="div-width">
+                {#       <div class="tab-pane" id="settings">#}
+                <center><h2>司机绑卡</h2></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+
+                        <div class="col-sm-6">
+                            <select id="environment3" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">司机手机</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="driver_mobile_driverBankBindCard"
+                                   placeholder="请输入手机">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="driverBankBindCardSubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                    <textarea class="form-control" rows="10" id="driver_bank_bind_card_result"
+                              style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="driver_bank_bind_card_list">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="driver_4">
+            <h4>联系人：郭冰洁</h4>
+            <div class="div-width">
+                {#       <div class="tab-pane" id="settings">#}
+                <center><h2>运单打点</h2></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+
+                        <div class="col-sm-6">
+                            <select id="environment4" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">司机手机</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="driver_mobile_driverOrderMakepoint"
+                                   placeholder="请输入手机">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">订单号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="order_sn" placeholder="请输入订单号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="driverOrderMakepointSubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                    <textarea class="form-control" rows="10" id="driver_ordermakepoint_result"
+                              style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="driver_ordermakepoint_list">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="driver_5">
+            <h4>联系人：郭冰洁</h4>
+            <div class="div-width">
+                <center><h2>调度确认司机符合</h2></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+
+                        <div class="col-sm-6">
+                            <select id="environment5" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">操作类型</label>
+                        <div class="col-sm-6">
+                            <label><input type="radio" checked="checked" name="opt_type_driverDispatchComfirm"
+                                          value="符合"> 调度确认司机符合</label>
+                            <label><input type="radio" name="opt_type_driverDispatchComfirm"
+                                          value="不符合"> 调度确认司机不符合</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">司机手机</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="driver_mobile_driverDispatchComfirmOrder"
+                                   placeholder="请输入司机手机号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">调度手机号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="dispatch_mobile" placeholder="请输入调度手机号">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="driverDispatchComfirmOrderSubmit">执行
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                    <textarea class="form-control" rows="10" id="driver_dispatchconfirmorder_result"
+                              style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="driver_dispatch_confirm_order_list">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade  in  active" id="driver_6">
+            <h4>联系人：郭冰洁</h4>
+            <div class="div-width">
+                <center><h2>新建司机</h2></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+
+                        <div class="col-sm-6">
+                            <select id="environment6" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">操作类型</label>
+                        <div class="col-sm-6">
+                            <label><input type="radio" checked="checked" name="opt_type_addDriver" value="相同">
+                                身份证号相同司机(仅用于测试)</label>
+                            <!--<label><input type="radio" name="opt_type_addDriver" value="不同">身份证号不同的司机（暂支持50个，且不支持r1环境）</label>-->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">司机状态</label>
+                       <div class="col-sm-6">
+                            <select id="driver_status" class="selectpicker" title="司机状态" style="width: 50px">
+                                <option value="2" selected>审核通过</option>
+                                <option value="1">审核中</option>
+                                <option value="3">审核不通过</option>
+                            </select>
+                       </div>
+                    </div>
+                        <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">车辆状态</label>
+                      <div class="col-sm-6">
+                            <select id="truck_status" class="selectpicker" title="车辆状态" style="width: 50px">
+                                <option value="2" selected>审核通过</option>
+                                <option value="1">审核中</option>
+                                <option value="3">审核不通过</option>
+                            </select>
+                        </div>
+                        </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">新建司机数量</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="number" placeholder="请输入新建司机数量">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">手机号前3位</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="start" placeholder="请输入手机号前3位">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="addDriverSubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                    <textarea class="form-control" rows="10" id="add_driver_result"
+                              style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="add_driver_table">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="driver_7">
+            <h4>联系人：高鹏鸿</h4>
+            <div class="div-width">
+                {#       <div class="tab-pane" id="settings">#}
+                <center><h2>上传回单</h2></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+
+                        <div class="col-sm-6">
+                            <select id="environment7" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">司机手机</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="driver_mobile_uploadReceipt"
+                                   placeholder="请输入手机">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">订单号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="order_sn_uploadReceipt" placeholder="请输入订单号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="driveruploadReceiptSubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                    <textarea class="form-control" rows="10" id="driver_uploadReceipt_result"
+                              style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="driver_uploadReceipt_list">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="driver_8">
+            <h4>联系人：高鹏鸿</h4>
+            <div class="div-width">
+                {#       <div class="tab-pane" id="settings">#}
+                <center><h2>司机举证上报</h2></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+
+                        <div class="col-sm-6">
+                            <select id="environment8" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">司机手机</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="driver_uploadException" placeholder="请输入手机">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">订单号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="order_sn_uploadException" placeholder="请输入订单号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="driveruploadExceptionSubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                    <textarea class="form-control" rows="10" id="driver_uploadException_result"
+                              style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="driver_uploadException_list">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="driver_9">
+            <h4>联系人：高鹏鸿</h4>
+            <div class="div-width">
+                {#       <div class="tab-pane" id="settings">#}
+                <center><h2>调度确认完结</h2></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+
+                        <div class="col-sm-6">
+                            <select id="environment9" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">司机手机</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="driver_dispatchpreConfirm" placeholder="请输入手机">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">调度手机号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="dispatch_mobile_dispatchpreConfirm"
+                                   placeholder="请输入调度手机号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">订单号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="order_sn_dispatchpreConfirm"
+                                   placeholder="请输入订单号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="driverdispatchpreConfirmSubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                    <textarea class="form-control" rows="10" id="driver_dispatchpreConfirm_result"
+                              style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="driver_dispatchpreConfirm_list">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="driver_10">
+            <h4>联系人：郭冰洁</h4>
+            <div class="div-width">
+                {#       <div class="tab-pane" id="settings">#}
+                <center><h2>司机提款</h2></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+
+                        <div class="col-sm-6">
+                            <select id="environment10" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">操作类型</label>
+                        <div class="col-sm-6">
+                            <label><input type="radio" checked="checked" name="opt_type_driverwithdraw" value="运费"> 运费提款</label>
+                            <label><input type="radio" name="opt_type_driverwithdraw" value="补贴"> 补贴提款</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">司机手机</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="driver_WithDraw" placeholder="请输入手机">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="driverWithDrawSubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                    <textarea class="form-control" rows="10" id="driver_WithDraw_result"
+                              style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="driver_WithDraw_list">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="driver_11">
+            <h4>联系人：郭冰洁</h4>
+            <div class="div-width">
+                {#       <div class="tab-pane" id="settings">#}
+                <center><h2>安排司机</h2></center>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+
+                        <div class="col-sm-6">
+                            <select id="environment11" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">司机手机</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="driver_mobile_driverdispatcharrange"
+                                   placeholder="请输入手机">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">订单号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="order_sn_dispatcharrange" placeholder="请输入订单号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="driverdispatcharrangeSubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                    <textarea class="form-control" rows="10" id="driver_dispatcharrange_result"
+                              style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="driver_dispatcharrange_list">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="driver_12">
+            <h4>联系人：高鹏鸿</h4>
+            <div class="div-width">
+                {#       <div class="tab-pane" id="settings">#}
+                <center><h2>日包车标的推送</h2></center>
+                <div class="form-horizontal">
+                   <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+
+                        <div class="col-sm-6">
+                            <select id="environment12" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">始发省市</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="driver_shortrent_start_provincename"
+                                   placeholder="湖北">
+                            <input type="text" class="form-control" id="driver_shortrent_start_cityname"
+                                   placeholder="武汉">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">目的省市</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="driver_shortrent_end_provincename"
+                                   placeholder="辽宁">
+                            <input type="text" class="form-control" id="driver_shortrent_end_cityname" placeholder="大连">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="drivershortrentSubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                    <textarea class="form-control" rows="10" id="driver_shortrent_result"
+                              style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="driver_shortrent_list">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="driver_13">
+            <h4>联系人：郭冰洁</h4>
+            <div class="div-width">
+                {#       <div class="tab-pane" id="settings">#}
+                <center><h2>批量给司机安排单子</h2></center>
+                <div class="form-horizontal">
+                   <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+
+                        <div class="col-sm-6">
+                            <select id="environment13" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">新建司机数量</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="driver_number" placeholder="请输入新建司机数量">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">手机号前3位</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="driver_start" placeholder="请输入手机号前3位">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">线路id</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="driver_line_id" placeholder="请输入线路id">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="drivercreateandorderSubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                    <textarea class="form-control" rows="10" id="driver_createandorder_result"
+                              style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="driver_createandorder_list">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="driver_14">
+            <h4>联系人：郭冰洁</h4>
+            <div class="div-width">
+                {#       <div class="tab-pane" id="settings">#}
+                <center><h2>一键处理所有异常</h2></center>
+                <div class="form-horizontal">
+                   <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+
+                        <div class="col-sm-6">
+                            <select id="environment14" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">运单号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="driver_order_sn" placeholder="请输入单号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="driverordersnSubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                    <textarea class="form-control" rows="10" id="driver_ordersn_result"
+                              style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="driver_ordersn_list">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="driver_15">
+            <h4>联系人：郭冰洁</h4>
+            <div class="div-width">
+                {#       <div class="tab-pane" id="settings">#}
+                <center><h2>不同状态运单</h2></center>
+                <div class="form-horizontal">
+                   <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+
+                        <div class="col-sm-6">
+                            <select id="environment15" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">是否新建司机</label>
+                       <div class="col-sm-6">
+                            <select id="driver_is_exit" class="selectpicker" title="是否新建" style="width: 50px">
+                                <option value="1" selected>新建</option>
+                                <option value="2">已有</option>
+                            </select>
+                       </div>
+                    </div>
+                    <div id="div_create">
+                        <div class="form-group">
+                            <label for="inputEmail" class="col-sm-2 control-label">手机号前3位</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="driver_status_order_start" placeholder="请输入手机号前3位">
+                            </div>
+                        </div>
+                   </div>
+                    <div id="div_exits">
+                        <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">司机手机</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="driver_status_order" placeholder="请输入手机">
+                        </div>
+                    </div>
+                </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">运单状态</label>
+                       <div class="col-sm-6">
+                            <select id="driver_order_status" class="selectpicker" title="运单状态" style="width: 50px">
+                                <option value="承运中" selected>承运中</option>
+                                <option value="打点完成">打点完成</option>
+                                <option value="异常处理完成">异常处理完成</option>
+                                <option value="有可提款">有可提款</option>
+                                <option value="提款完成">提款完成</option>
+                            </select>
+                       </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">线路id</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="driver_status_line_id" placeholder="请输入线路id">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="driverstatusorderSubmit">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                    <textarea class="form-control" rows="10" id="driver_statusorder_result"
+                              style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="driver_statusorder_list">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock %}
+
+{% block script %}
+    <script src="/static/js/driver_tools.js"></script>
+{% endblock %}

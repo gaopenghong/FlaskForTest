@@ -1,0 +1,182 @@
+<meta charset="utf-8">
+{% extends "base.html" %}
+{% block body %}
+    <ul id='myTab' class="nav nav-tabs">
+        <li class="active">
+            <a href="#myTabContent" data-toggle="tab">
+                广告位管理
+            </a>
+        </li>
+        <li>
+            <a href="#myTabContent1" data-toggle="tab">
+                ios提审配置
+            </a>
+        </li>
+    </ul>
+    <!-- 每个tab页对应的内容 -->
+    <div class="tab-content">
+        <div id="myTabContent" class="tab-pane fade in active">
+        <div class="tab-pane fade in active" id="oms_ads">
+            <h4>联系人：王海瑞</h4>
+            <div class="div-width">
+                <div class="form-horizontal">
+                    <center><h2>广告位管理</h2></center>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+
+                        <div class="col-sm-6">
+                            <select id="environment_1" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">终端类型</label>
+                        <div class="col-sm-6">
+                        <select id="app_type" class="selectpicker" title="请选择终端类型" style="width: 50px">
+                                <option value="1132" selected>福佑好运</option>
+                                <option value="3211">福佑车队</option>
+                                <option value="2311">福佑货主</option>
+                                <option value="3232">共建车</option>
+
+                        </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">广告类型</label>
+                        <div class="col-sm-6">
+                            <select id="type_id" class="selectpicker" title="请选择广告类型" style="width: 50px">
+                                <option value="2" selected>首页运营弹窗</option>
+                                <option value="3">启动闪屏</option>
+                                <option value="4">首页轮播图</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">标题</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="title" placeholder="请输入标题">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">链接地址</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="link_url" value="https://www.baidu.com" placeholder="请输入链接地址">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">活动图片url</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="pic_url" value="https://public.fuyoukache.com/2865d1c4-5583-420a-90c9-b89d5efa2736.jpg" placeholder="请输入活动图片url">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">排名</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="rank" placeholder="请输入banner排名">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="OmsAdvertPosition">执行</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                    <textarea class="form-control" rows="10" id="selectOmsAdvertPositionResult"
+                              style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="ome_advert_position_table">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+        <div id="myTabContent1" class="tab-pane fade">
+        <div class="tab-pane fade in active" id="oms_ios">
+            <h4>联系人：王海瑞</h4>
+            <div class="div-width">
+                <div class="form-horizontal">
+                    <center><h2>ios提审配置</h2></center>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">环境</label>
+
+                        <div class="col-sm-6">
+                            <select id="environment_2" class="selectpicker" title="请选择环境" style="width: 50px">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">客户端类型</label>
+                        <div class="col-sm-6">
+                        <select id="customer_type" class="selectpicker" title="请选择客户端类型" style="width: 50px">
+                                <option value="1" selected>货主</option>
+                                <option value="2">经纪人</option>
+                                <option value="3">司机</option>
+                                <option value="5">专车</option>
+
+                        </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">开发版本号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="devVersion" placeholder="请输入开发版本号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">提测环境</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="host" value="host" placeholder="请输入提测环境">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">备注</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="remark" value="测试"  placeholder="请输入备注内容">
+                        </div>
+                    </div>
+{#                    <div class="form-group">#}
+{#                        <label for="inputEmail" class="col-sm-2 control-label">操作人</label>#}
+{#                        <div class="col-sm-6">#}
+{#                            <input type="text" class="form-control" id="adminName" placeholder="请输入操作人">#}
+{#                        </div>#}
+{#                    </div>#}
+                     <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger" id="OmsIosConfig">执行</button>
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">结果展示区域</label>
+                        <div class="col-sm-6">
+                    <textarea class="form-control" rows="10" id="selectOmsIosConfigResult"
+                              style=" width: 100%; align-content: center"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="oms_ios_config_table">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+{% endblock %}
+
+{% block script %}
+    <script src="/static/js/oms_tools.js"></script>
+{% endblock %}
+
+

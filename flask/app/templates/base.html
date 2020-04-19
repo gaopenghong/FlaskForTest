@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>福佑 | 测试工作台</title>
+    <link type="image/x-icon" rel="shortcut icon" href="/static/img/favicon.ico">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="/static/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/static/bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="/static/bower_components/Ionicons/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/static/dist/css/AdminLTE.css">
+    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+          page. However, you can choose any other skin. Make sure you
+          apply the skin class to the body tag so the changes take effect. -->
+    <link rel="stylesheet" href="/static/dist/css/skins/skin-blue.min.css">
+    <link href="/static/css/lib/bootstrap-table.css" rel="stylesheet">
+    <link href="/static/css/lib/bootstrap-select.css" rel="stylesheet">
+    {#    <link href="https://cdn.bootcss.com/bootstrap-select/2.0.0-beta1/css/bootstrap-select.min.css" rel="stylesheet">#}
+
+    <!-- Custom Style -->
+    <link href="/static/css/custom.public.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+    <!-- Google Font -->
+    {% block head %}
+    {% endblock %}
+</head>
+<!--
+BODY TAG OPTIONS:
+=================
+Apply one or more of the following classes to get the
+desired effect
+|---------------------------------------------------------|
+| SKINS         | skin-blue                               |
+|               | skin-black                              |
+|               | skin-purple                             |
+|               | skin-yellow                             |
+|               | skin-red                                |
+|               | skin-green                              |
+|---------------------------------------------------------|
+|LAYOUT OPTIONS | fixed                                   |
+|               | layout-boxed                            |
+|               | layout-top-nav                          |
+|               | sidebar-collapse                        |
+|               | sidebar-mini                            |
+|---------------------------------------------------------|
+-->
+<body class="hold-transition skin-blue sidebar-mini fixed">
+<div class="wrapper">
+
+    <!-- Main Header -->
+    <header class="main-header">
+
+        <!-- Logo -->
+        <a href="/" class="logo">
+            <!-- mini logo for sidebar mini 50x50 pixels -->
+            <span class="logo-mini"><b>FTC</b></span>
+            <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg"><b>FTestCenter</b></span>
+        </a>
+        <!-- Header Navbar -->
+        <nav class="navbar navbar-static-top" role="navigation">
+            <!-- Sidebar toggle button-->
+            <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                <span class="sr-only">Toggle navigation</span>
+            </a>
+
+            <div class="navbar-custom-menu">
+
+                <ul class="nav navbar-nav">
+
+                    <!-- /.messages-menu -->
+                    <!-- User Account Menu -->
+                    <li class="dropdown user user-menu">
+                        <!-- Menu Toggle Button -->
+
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <!-- The user image in the navbar-->
+                            <img src="/static/dist/img/user-male-circle-blue-128.png" class="user-image"
+                                 alt="User Image">
+                            {#                            <span id="username"></span>#}
+                            <span id="username1" value="{{ name }}">{{ name }}</span>
+                            <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                            {#                            <span id="username" class="hidden-xs">大福哥</span>#}
+                            {#                            hi,<span id="username"></span>#}
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!-- The user image in the menu -->
+                            <li class="user-header">
+                                <img src="/static/dist/img/avatar04.png" class="img-circle"
+                                     alt="User Image">
+                            </li>
+                            <!-- Menu Footer-->
+                            <li class="user-footer">
+                                <div class="pull-left">
+                                </div>
+                                <div style=" text-align:center;">
+                                    <a href="/oauth/logout" class="btn btn-default btn-flat" id="logout">注销</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar fixed">
+
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <form action="javascript:searchMenu()" method="get" class="sidebar-form">
+                <div class="input-group">
+                    <input type="text" name="search-text" class="form-control" placeholder="Search...">
+                    <span class="input-group-btn">
+                        <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i
+                                class="fa fa-search"></i>
+                        </button>
+                     </span>
+                </div>
+            </form>
+            <!-- Sidebar Menu -->
+            <ul class="sidebar-menu" data-widget="tree">
+                <li class="header">菜单</li>
+                <!-- Optionally, you can add icons to the links -->
+                <li class="treeview">
+                    <a href="#"><i class="fa fa-th"></i> <span>自动化</span>
+                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="/auto/index"><i class="fa fa-leaf"></i>case执行</a></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-share"></i> <span>测试工具</span>
+                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="/tools/accountIndex"><i class="fa fa-circle-o"></i> 创建账号</a></li>
+                        <li><a href="/tools/orderIndex"><i class="fa fa-circle-o"></i> 运单相关</a></li>
+                        <li><a href="/tools/financeIndex"><i class="fa fa-circle-o"></i> 财务相关</a></li>
+                        <li><a href="/tools/serverIndex"><i class="fa fa-circle-o"></i> 服务系统相关</a></li>
+                        <li><a href="/tools/driverIndex"><i class="fa fa-circle-o"></i> 司机相关</a></li>
+                        <li><a href="/tools/customerIndex"><i class="fa fa-circle-o"></i> 客户相关</a></li>
+                        <li><a href="/tools/motorcadeIndex"><i class="fa fa-circle-o"></i> 车队相关</a></li>
+<!--                        <li><a href="/tools/crontabIndex"><i class="fa fa-circle-o"></i> 定时任务</a></li>-->
+                        <li><a href="/tools/truckIndex"><i class="fa fa-circle-o"></i> 共建车相关</a></li>
+                        <li><a href="/tools/omsIndex"><i class="fa fa-circle-o"></i> 运营相关</a></li>
+
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#"><i class="fa fa-check-square"></i> <span>算法测试</span>
+                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="/algorithm/fchatIndex"><i class="fa fa-leaf"></i>智能客服</a></li>
+                        <li><a href="/algorithm/config"><i class="fa fa-leaf"></i>指标配置</a></li>
+                        <!--
+                        <li><a href="/algorithm/dispatchIndex"><i class="fa fa-leaf"></i>智能调度</a></li>
+                        <li><a href="/algorithm/quoteIndex"><i class="fa fa-leaf"></i>智能报价</a></li>
+                        <li><a href="/algorithm/orderCountIndex"><i class="fa fa-leaf"></i>货量预测</a></li>
+                        -->
+
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#"><i class="fa fa-check-square"></i> <span>公司内部平台</span>
+                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="http://wiki.fuyoukache.com/" target="_blank"><i
+                                class="fa fa-clone"></i>wiki</a></li>
+                        <li><a href="https://www.tapd.cn/company/participant_projects?from=left_tree2" target="_blank"><i
+                                class="fa fa-clone"></i>tapd</a></li>
+                        <li><a href="https://saas.tingyun.com/web/console/console" target="_blank"><i
+                                class="fa fa-clone"></i>听云</a></li>
+
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#"><i class="fa fa-desktop"></i> <span>外部工具</span>
+                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="http://tool.chinaz.com/Tools/unixtime.aspx" target="_blank"><i
+                                class="fa fa-clone"></i>时间戳转换</a></li>
+                        <li><a href="http://tool.chinaz.com/tools/diff" target="_blank"><i class="fa fa-clone"></i>diff工具</a>
+                        </li>
+                        <li><a href="http://tool.oschina.net/hexconvert/" target="_blank"><i class="fa fa-clone"></i>进制转换</a>
+                        </li>
+                        <li><a href="http://tool.chinaz.com/Tools/urlencode.aspx" target="_blank"><i
+                                class="fa fa-clone"></i>urlencode/decode</a>
+                        </li>
+                        <li><a href="https://www.bejson.com/" target="_blank"><i class="fa fa-clone"></i>json解析</a></li>
+
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#"><i class="fa fa-calendar-o"></i> <span>学习网站</span>
+                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="https://tech.meituan.com/" target="_blank"><i
+                                class="fa fa-lemon-o"></i>美团技术团队</a></li>
+                        <li><a href="https://www.infoq.cn/" target="_blank"><i class="fa fa-lemon-o"></i>infoQ</a>
+                        </li>
+                        <li><a href="https://www.csdn.net/" target="_blank"><i class="fa fa-lemon-o"></i>CSDN</a>
+                        </li>
+                        <li><a href="https://www.runoob.com/" target="_blank"><i
+                                class="fa fa-lemon-o"></i>runoob(编程学习网站)</a>
+                        </li>
+                        <li><a href="http://www.51testing.com" target="_blank"><i
+                                class="fa fa-lemon-o"></i>51testing</a></li>
+                        <li><a href="https://yq.aliyun.com/" target="_blank"><i class="fa fa-lemon-o"></i>阿里云栖社区</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#"><i class="fa fa-calendar-o"></i> <span>统计</span>
+                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="/stat/index"><i
+                                class="fa fa-lemon-o"></i>平台操作报表</a></li>
+
+                    </ul>
+                </li>
+            </ul>
+            <!-- /.sidebar-menu -->
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                {% block header %}
+                {% endblock %}
+            </h1>
+
+        </section>
+
+        <!-- Main content -->
+        <section class="content container-fluid">
+            <!--------------------------
+              | Your Page Content Here |
+              -------------------------->
+            {% block body %}
+            {% endblock %}
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <!-- To the right -->
+        <div class="pull-left hidden-xs">
+            联系人：刘春福
+        </div>
+        <!-- Default to the left -->
+        <strong>
+            <center>质量保障部出品</center>
+        </strong>
+    </footer>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED JS SCRIPTS -->
+
+<!-- jQuery 3 -->
+<script src="/static/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="/static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/static/dist/js/adminlte.min.js"></script>
+<script src="/static/js/lib/jquery.min.js"></script>
+<script src="/static/js/lib/jquery.cookie.js"></script>
+
+<!-- Bootstrap -->
+
+{#<script src="/static/js/lib/defaults-zh_CN.js"></script>#}
+
+<!-- table -->
+<script src="/static/js/lib/bootstrap-table.js"></script>
+
+<script src="/static/js/lib/bootstrap-table-filter.js"></script>
+<script src="/static/js/lib/bootstrap-table-zh-CN.js"></script>
+
+<script src="/static/js/lib/sweetalert.min.js"></script>
+<script src="/static/js/lib/bootstrap-select.js"></script>
+<script src="/static/js/ftest.js"></script>
+
+{#<script src="/static/js/stat.js"></script>#}
+<script type="text/javascript">
+    $(function () {
+
+        $('.sidebar-menu li:not(.treeview) > a').on('click', function () {
+            console.log(this.href);
+            var $parent = $(this).parent().addClass('active');
+            $parent.siblings('.treeview.active').find('> a').trigger('click');
+            $parent.siblings().removeClass('active').find('li').removeClass('active');
+        });
+
+        $('.sidebar-menu a').each(function () {
+            if (this.href === window.location.href) {
+                $(this).parent().addClass('active')
+                    .closest('.treeview').addClass('.menu-open')
+                    .closest('.treeview-menu').addClass('.menu-open')
+                    .closest('.treeview').addClass('active');
+                $(this).parent().addClass('active')
+                    .closest('.treeview-menu').addClass('.menu-open')
+                    .closest('.treeview').addClass('active');
+
+
+            }
+        });
+    });
+
+    function showUrl(url) {
+        window.location.href = url
+    }
+</script>
+{% block script %}
+{% endblock %}
+</body>
+</html>
